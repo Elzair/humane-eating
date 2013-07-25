@@ -1,8 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  ///h1= title
+  ///p Welcome to #{title}
+  header.topbar
+    .topbar-inner
+      section
+        .navigation
+          .pills-holder
+            .pills
+              li: a(href="#") Install
+              li: a(href="#") Tools
   #examplepage
     header
       h1 Content...
