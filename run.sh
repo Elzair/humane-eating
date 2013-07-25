@@ -20,4 +20,4 @@ done
 # Compile CSS templates and run app with nodemon
 cd ../../
 options=$temps$imports
-stylus $options & nodemon app.js
+./node_modules/stylus/bin/stylus $options & nodemon app.js
