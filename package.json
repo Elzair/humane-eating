@@ -1,0 +1,17 @@
+{
+  "name": "humane-eating",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "jade": "*",
+    "stylus": "*",
+  },
+  "subdomain": "humane-eating",
+  "engines": {
+    "node": "0.8.x"
+  }
+}
