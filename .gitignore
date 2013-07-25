@@ -2,3 +2,5 @@
 *.DS_STORE
 npm-debug.log
 node_modules/
+public/stylesheets/fluidity.styl
+*.css
