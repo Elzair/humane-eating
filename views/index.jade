@@ -3,17 +3,39 @@ extends layout
 block content
   ///h1= title
   ///p Welcome to #{title}
+  script.
+    require(['javascripts/home'], function (home) {
+      //new home.SiteView({ model: home.site }).render();
+      var title_m = new home.TitleModel({title: 'Humane Eateries'});
+      var title_v = new home.TitleView({
+        model: title_m, 
+        el: '#title'});
+      var img_m = new home.ImageModel({
+        src: '/images/america_for_animals_60x60.png',
+        caption: 'America For Animals logo',
+        hidden: false
+      });
+      var img_v = new home.ImageView({
+        model: img_m,
+        el: '#logo'
+      });
+    });
+  #main
   .topbar
     .topbar-inner
       .title-bar
-        .logo
-          img.logo(src="/images/america_for_animals_60x60.png")
-          h1.name Humane Eating 
-        .navigation
-          .pills-holder
-            .pills
-              li: a(href="#") Install
-              li: a(href="#") Tools
+        section.empty
+        section.title-header
+          .brand
+            #logo
+              img(src="/images/america_for_animals_60x60.png", alt="America for Animals logo")
+            h1#title Humane Eating 
+          .navigation#navbar
+            .pills-holder
+              .pills
+                li: a(href="#") Install
+                li: a(href="#") Tools
+        section.empty
   .container
     .page-content
       sidebar
@@ -22,8 +44,3 @@ block content
         p Article Content...
     footer
       p#myfooter Footer Content...
-  script.
-    require(['jquery'], function($) {
-      $('#myfooter').html('Hello, World!');
-      console.log('Hello World!');
-    });

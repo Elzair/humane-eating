@@ -15,11 +15,13 @@
     "reqwest": "*"
   },
   "jam": {
-    "packageDir": "public/jam",
+    "packageDir": "public/javascripts/jam",
     "baseUrl": "public",
     "dependencies": {
       "jquery": "*",
-      "backbone": "*"
+      "underscore": "*",
+      "backbone": "*",
+      "backbone-localStorage": "*"
     }
   }
 }

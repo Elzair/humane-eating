@@ -16,24 +16,61 @@ h1
 
 .centered
   text-align center
+
+.hidden
+  display none
   
 // iPhone 5 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
   .topbar
     height 8%
-  img.logo
-    visibility hidden
+  #title
+    grid-space(100%)
+    text-align center
 
-.title-bar
-  grid(100%)
-  .logo
-    img.logo
-      grid-space(60)
-    h1.name
+// iPhone 2G, 3G, 4, 4S
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  .topbar
+    height 8%
+  #title
+    grid-space(100%)
+    text-align center
+
+// 3rd and 4th gen iPads (Retina display)
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 2)
+  .topbar
+    height 8%
+  #title
+    grid-space(100%)
+    text-align center
+
+// 1st and 2nd gen iPads 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 1)
+  .topbar
+    height 8%
+  #title
+    grid-space(100%)
+    text-align center
+
+// All iPad generations - fallback
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  .topbar
+    height 8%
+  #logo
+    grid-space(100%)
+    text-align center
+
+// Desktops and laptops
+@media only screen and (min-width: 1224px)
+  .title-bar
+    grid(100%)
+    .empty
+      grid-space(25%)
+    .title-header
       grid-space(50%)
-      padding 18px
-  .navigation
-    grid-space(40%)
+      .brand
+        #title
+          margin 10px, 0px, 10px, 0px
 
 .container
   grid(80%,960px)
