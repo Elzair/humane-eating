@@ -11,14 +11,17 @@ a
 @import "fluidity/elements"
 @import "fluidity/forms"
 
-h1
-  font-size 2.5em
-
 .centered
   text-align center
 
 .hidden
   display none
+
+.fixed
+  position fixed
+
+.float
+  float left
   
 // iPhone 5 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
@@ -62,6 +65,12 @@ h1
 
 // Desktops and laptops
 @media only screen and (min-width: 1224px)
+  h1
+    font-size 3.5em
+  .topbar
+  .topbar-inner
+  .title-bar
+    height 60px
   .title-bar
     grid(100%)
     .empty
@@ -69,7 +78,10 @@ h1
     .title-header
       grid-space(50%)
       .brand
+        #logo
+          grid-space(60px)
         #title
+          grid-space(50%-60px)
           margin 10px, 0px, 10px, 0px
 
 .container
