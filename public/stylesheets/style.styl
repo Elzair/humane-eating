@@ -14,13 +14,23 @@ a
 h1
   font-size 2.5em
 
+.centered
+  text-align center
+  
+// iPhone 5 
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+  .topbar
+    height 8%
+  img.logo
+    visibility hidden
+
 .title-bar
-  grid(100%,62)
+  grid(100%)
   .logo
     img.logo
-      grid-space(60,60)
+      grid-space(60)
     h1.name
-      grid-space(50%,60)
+      grid-space(50%)
       padding 18px
   .navigation
     grid-space(40%)
