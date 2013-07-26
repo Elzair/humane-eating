@@ -3,18 +3,19 @@ extends layout
 block content
   ///h1= title
   ///p Welcome to #{title}
-  header.topbar
+  .topbar
     .topbar-inner
-      section
+      .title-bar
+        .logo
+          img.logo(src="/images/america_for_animals_60x60.png")
+          h1.name Humane Eating 
         .navigation
           .pills-holder
             .pills
               li: a(href="#") Install
               li: a(href="#") Tools
-  #examplepage
-    header
-      h1 Content...
-    section#content
+  .container
+    .page-content
       sidebar
         p Content...
       article

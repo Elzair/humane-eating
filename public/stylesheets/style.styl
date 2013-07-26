@@ -11,15 +11,23 @@ a
 @import "fluidity/elements"
 @import "fluidity/forms"
 
-#atest
-  color: black
+h1
+  font-size 2.5em
 
-#examplepage
-   grid(80%,960px)
-  header
-    background-color darkgray2
-    color white
-  #content
+.title-bar
+  grid(100%,62)
+  .logo
+    img.logo
+      grid-space(60,60)
+    h1.name
+      grid-space(50%,60)
+      padding 18px
+  .navigation
+    grid-space(40%)
+
+.container
+  grid(80%,960px)
+  .page-content
     sidebar
       grid-space(30%)
     article
