@@ -13,5 +13,9 @@
     "ender-js": "*",
     "jeesh": "*",
     "reqwest": "*"
+  },
+  "jam": {
+    "packageDir": "public/jam",
+    "baseUrl": "jam"
   }
 }
