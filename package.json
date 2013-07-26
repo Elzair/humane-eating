@@ -16,6 +16,10 @@
   },
   "jam": {
     "packageDir": "public/jam",
-    "baseUrl": "jam"
+    "baseUrl": "public",
+    "dependencies": {
+      "jquery": "*",
+      "backbone": "*"
+    }
   }
 }

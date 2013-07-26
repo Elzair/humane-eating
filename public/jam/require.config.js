@@ -2,17 +2,17 @@ var jam = {
     "packages": [
         {
             "name": "backbone",
-            "location": "../public/jam/backbone",
+            "location": "jam/backbone",
             "main": "backbone.js"
         },
         {
             "name": "jquery",
-            "location": "../public/jam/jquery",
+            "location": "jam/jquery",
             "main": "dist/jquery.js"
         },
         {
             "name": "underscore",
-            "location": "../public/jam/underscore",
+            "location": "jam/underscore",
             "main": "underscore.js"
         }
     ],
@@ -36,17 +36,17 @@ if (typeof require !== "undefined" && require.config) {
     "packages": [
         {
             "name": "backbone",
-            "location": "../public/jam/backbone",
+            "location": "jam/backbone",
             "main": "backbone.js"
         },
         {
             "name": "jquery",
-            "location": "../public/jam/jquery",
+            "location": "jam/jquery",
             "main": "dist/jquery.js"
         },
         {
             "name": "underscore",
-            "location": "../public/jam/underscore",
+            "location": "jam/underscore",
             "main": "underscore.js"
         }
     ],
@@ -69,17 +69,17 @@ else {
     "packages": [
         {
             "name": "backbone",
-            "location": "../public/jam/backbone",
+            "location": "jam/backbone",
             "main": "backbone.js"
         },
         {
             "name": "jquery",
-            "location": "../public/jam/jquery",
+            "location": "jam/jquery",
             "main": "dist/jquery.js"
         },
         {
             "name": "underscore",
-            "location": "../public/jam/underscore",
+            "location": "jam/underscore",
             "main": "underscore.js"
         }
     ],
