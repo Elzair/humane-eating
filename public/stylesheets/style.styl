@@ -3,94 +3,101 @@ body
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
 a
   color: #00B7FF
-
-@import "fluidity/normalize"
-@import "fluidity/type"
-@import "fluidity/semantic-grid"
-@import "fluidity/css3"
-@import "fluidity/elements"
-@import "fluidity/forms"
-
+  
 .centered
   text-align center
 
 .hidden
   display none
 
-.fixed
-  position fixed
+.no-decoration
+  text-decoration none
+  color currentColor 
 
-.float
-  float left
+.topbar
+  margin 0 0 10 0
+  position absolute
+  width 100%
+  top calc(0%)
+  left 0%
+
+.navigation
+  list-style-type none
+
+.nav-element
+  @extend .no-decoration
+  border 1px solid black
+  border-radius 2px 
+  padding 10px 10px 10px 10px
+  text-decoration none
+  color black
+  margin-left 5px
+
+flexdir(n)
+  -webkit-flex-direction n
+  flex-direction n
+
+flexflow(n)
+  -webkit-flex-flow n
+  -ms-flex-flow n
+  -moz-flex-flow n
+  flex-flow n
+
+flexalign(n)
+  -webkit-flex-align n
+  -ms-flex-align n
+  -moz-flex-align n
+  align-items n
+  align-content n
+
+.flexbox
+  display -webkit-box
+  display -webkit-flex
+  display -moz-box
+  display -ms-flexbox
+  display flex
+  flexflow(row wrap)
+  flexalign(center)
   
 // iPhone 5 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
-  .topbar
+  header.topbar
     height 8%
-  #title
-    grid-space(100%)
-    text-align center
 
-// iPhone 2G, 3G, 4, 4S
+// Old iPhone 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
-  .topbar
+  header.topbar
     height 8%
-  #title
-    grid-space(100%)
-    text-align center
 
 // 3rd and 4th gen iPads (Retina display)
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 2)
-  .topbar
+  header.topbar
     height 8%
-  #title
-    grid-space(100%)
-    text-align center
 
 // 1st and 2nd gen iPads 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 1)
-  .topbar
+  header.topbar
     height 8%
-  #title
-    grid-space(100%)
-    text-align center
 
 // All iPad generations - fallback
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
-  .topbar
+  header.topbar
     height 8%
-  #logo
-    grid-space(100%)
-    text-align center
 
 // Desktops and laptops
 @media only screen and (min-width: 1224px)
   h1
-    font-size 3.5em
-  .topbar
-  .topbar-inner
-  .title-bar
-    height 60px
-  .title-bar
-    grid(100%)
-    .empty
-      grid-space(25%)
-    .title-header
-      grid-space(50%)
-      .brand
-        #logo
-          grid-space(60px)
-        #title
-          grid-space(50%-60px)
-          margin 10px, 0px, 10px, 0px
+    font-size 3em
+  .contents
+    position absolute
+    top calc(0%)
+    left calc(20%)
+  #logo
+    left calc(100%-60%)
+  #title
+  .container
+    margin-top 10%
 
-.container
-  grid(80%,960px)
-  .page-content
-    sidebar
-      grid-space(30%)
-    article
-      grid-space(70%)
-  footer
-    background-color lightgray2
-    text-align center
+.container footer
+  background-color lightgray2
+  text-align center

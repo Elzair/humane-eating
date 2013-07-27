@@ -20,24 +20,17 @@ block content
         el: '#logo'
       });
     });
-  #main
-  .topbar
-    .topbar-inner
-      .title-bar
-        .empty.fixed
-        .title-header
-          .brand.float
-            #logo
-              img(src="/images/america_for_animals_60x60.png", alt="America for Animals logo")
-            h1#title Humane Eating 
-          .navigation.float#navbar
-            .pills-holder
-              .pills
-                li.float: a(href="#") Install
-                li.float: a(href="#") Tools
-        .empty.fixed
-  .container
-    .page-content
+  header.topbar
+    .contents.flexbox
+      section.brand.flexbox
+        #logo
+          img(src="/images/america_for_animals_60x60.png", alt="America for Animals logo")
+        h1#title Humane Eating 
+      section.navigation.flexbox#navbar
+        li: a.nav-element(href="#") Find
+        li: a.nav-element(href="#") Share
+  section.container
+    section.page-content.flexbox
       sidebar
         p Sidebar Content...
       article
