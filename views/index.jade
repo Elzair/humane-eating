@@ -11,6 +11,7 @@ block content
         li: a.nav-element(href="#") Find
         li: a.nav-element(href="#") Share
   section.container
+    p Hello World!
     section.page-content.flexbox
       sidebar
         p Sidebar Content...
@@ -20,17 +21,33 @@ block content
       p#myfooter Footer Content...
   script.
     require(['javascripts/home'], function (home) {
-      var title_m = new home.TitleModel({title: 'Humane Eating'});
-      var title_v = new home.TitleView({
-        model: title_m, 
-        el: '#title'});
-      var img_m = new home.ImageModel({
+      var 
+      title_m = new home.TitleModel({title: 'Humane Eating'}),
+      img_m = new home.ImageModel({
         src: '/images/america_for_animals_60x60.png',
         caption: 'America For Animals logo',
         hidden: false
-      });
-      var img_v = new home.ImageView({
+      }),
+      coord_m = new home.CoordinatesModel({}),
+      loc_m = new home.LocationModel({})
+      title_v = new home.TitleView({
+        model: title_m, 
+        el: '#title'}),
+      img_v = new home.ImageView({
         model: img_m,
         el: '#logo'
+      });
+      $(document).ready(function() {
+        function logdata(data) {
+          console.log(data);
+        }
+        url = 'http://dev.vegtable.co/api/locations/23?jsonp=logdata'; 
+        $.getJSON(url)
+        .done(function(data) {
+          console.log(data);
+        })
+        .fail(function(err) {
+          console.log(err);
+        });
       });
     });

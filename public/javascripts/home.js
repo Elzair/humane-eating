@@ -1,12 +1,33 @@
 define(['jquery', 'backbone', 'underscore', 'javascripts/templates'], 
     function($, Backbone, _, templates) {
-  console.log(JSON.stringify(templates));
+  // Define models
   var TitleModel = Backbone.Model.extend({
     defaults: {
       title: 'Humane Eating',
     },
     initialize: function() {}
   }),
+  ImageModel = Backbone.Model.extend({
+    defaults: {
+      src: '',
+      caption: '',
+      classes: '',
+      hidden: true
+    },
+    initialize: function() {}
+  }),
+  CoordinatesModel = Backbone.Model.extend({
+    defaults: {
+      latitude: 0.0,
+      longitude: 0.0
+    },
+    initialize: function() {}
+  }),
+  LocationModel = Backbone.Model.extend({
+    initialize: function() {}
+  }),
+
+  // Define views
   TitleView = Backbone.View.extend({
     template: templates.title,
     initialize: function() {
@@ -18,15 +39,6 @@ define(['jquery', 'backbone', 'underscore', 'javascripts/templates'],
       return this;
     }
   }),
-  ImageModel = Backbone.Model.extend({
-    defaults: {
-      src: '',
-      caption: '',
-      classes: '',
-      hidden: true
-    },
-    initialize: function() {}
-  }),
   ImageView = Backbone.View.extend({
     template: templates.image,
     initialize: function() {
@@ -34,18 +46,19 @@ define(['jquery', 'backbone', 'underscore', 'javascripts/templates'],
     },
     render: function() {
       this.model.set({classes: this.model.get('hidden') ? 'hidden' : ''});
-      console.log(this.model.toJSON());
       var html = _.template(this.template, this.model.toJSON());
-      console.log(html);
       $(this.el).html(html);
       return this;
     }
   });
 
+  // Return constructors for models and views
   return {
     TitleModel: TitleModel,
-    TitleView: TitleView,
     ImageModel: ImageModel,
+    CoordinatesModel: CoordinatesModel,
+    LocationModel: LocationModel,
+    TitleView: TitleView,
     ImageView: ImageView
   };
 });
