@@ -1,3 +1,5 @@
+burgundya = rgb(35,30,30)
+burgundyb = rgb(110,100,100) 
 darkgray = rgb(150,150,150)
 
 lineargradient()
@@ -6,6 +8,10 @@ lineargradient()
   background-image -webkit-linear-gradient(arguments)
   background-image -ms-linear-gradient(arguments)
   background-image linear-gradient(arguments)
+
+adjustmargins(n)
+  -webkit-margin-before n
+  -webkit-margin-after n
 
 flexdir(n)
   -webkit-flex-direction n
@@ -70,16 +76,25 @@ flexorder(n)
   left 0
   top 0
   width 100%
-  height 100%
+  height 115%
   margin 0
   padding 0
+
+.gradient
+  background-position initial initial
+  background-repeat initial initial
 
 .gray-gradient
   lineargradient(0deg, darkgray 50%, white 100%)
   lineargradient(bottom, darkgray 50%, white 100%)
   background-image -webkit-gradient(linear, left bottom, left top, color-stop(0.5, darkgray), color-stop(1, white))
-  background-position initial initial
-  background-repeat initial initial
+  @extends .gradient
+
+.burgundy-gradient
+  lineargradient(0deg, burgundya 50%, burgundyb 100%)
+  lineargradient(bottom, burgundya 50%, burgundyb 100%)
+  background-image -webkit-gradient(linear, left bottom, left top, color-stop(0.5, burgundya), color-stop(1, burgundyb))
+  @extends .gradient
 
 .border-box
   border 1px solid rgb(80,80,80)
@@ -97,12 +112,15 @@ a
   color: #00B7FF
 
 .topbar
-  margin 0 0 10 0
   position fixed
   width 100%
   top calc(0%)
   left 0%
-  @extends .gray-gradient
+  z-index 2
+  @extends .burgundy-gradient
+
+.container
+  z-index 1
 
 .contents
   position relative
@@ -118,61 +136,73 @@ a
   @extend .gray-gradient
   margin-left 5px
   
-.container footer
-  background-color lightgray2
-  text-align center
 
 // iPhone 5 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
-  body
+  .title
     color white
+    adjustmargins(0.5em)
   .logo
     display none
   .navigation
     display none
+  .container
+    margin-top 20%
 
 // Old iPhone 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
-  body
+  .title
     color white
+    adjustmargins(0.5em)
   .logo
     display none
   .navigation
     display none
+  .container
+    margin-top 20%
 
 // 3rd and 4th gen iPads (Retina display)
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 2)
-  body
+  .title
     color white
+    adjustmargins(0.5em)
   .logo
     display none
   .navigation
     display none
+  .container
+    margin-top 20%
 
 // 1st and 2nd gen iPads 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 1)
-  body
+  .title
     color white
+    adjustmargins(0.5em)
   .logo
     display none
   .navigation
     display none
+  .container
+    margin-top 20%
 
 // All iPad generations - fallback
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
-  body
+  .title
     color white
+    adjustmargins(0.5em)
   .logo
     display none
   .navigation
     display none
+  .container
+    margin-top 20%
 
 // Desktops and laptops
 @media only screen and (min-width: 1224px)
   h1
     font-size 3em
-  .container
-    margin-top 10%
   .topbar
     background-image none
+  .container
+    margin-top 10%
 
