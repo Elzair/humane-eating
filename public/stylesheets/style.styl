@@ -1,37 +1,11 @@
-body
-  padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
-a
-  color: #00B7FF
-  
-.centered
-  text-align center
+darkgray = rgb(150,150,150)
 
-.hidden
-  display none
-
-.no-decoration
-  text-decoration none
-  color currentColor 
-
-.topbar
-  margin 0 0 10 0
-  position absolute
-  width 100%
-  top calc(0%)
-  left 0%
-
-.navigation
-  list-style-type none
-
-.nav-element
-  @extend .no-decoration
-  border 1px solid black
-  border-radius 2px 
-  padding 10px 10px 10px 10px
-  text-decoration none
-  color black
-  margin-left 5px
+lineargradient()
+  background-image -moz-linear-gradient(arguments)
+  background-image -o-linear-gradient(arguments)
+  background-image -webkit-linear-gradient(arguments)
+  background-image -ms-linear-gradient(arguments)
+  background-image linear-gradient(arguments)
 
 flexdir(n)
   -webkit-flex-direction n
@@ -44,11 +18,29 @@ flexflow(n)
   flex-flow n
 
 flexalign(n)
+  -webkit-box-align n
   -webkit-flex-align n
+  -moz-box-align n
   -ms-flex-align n
-  -moz-flex-align n
+  -webkit-align-items n
   align-items n
   align-content n
+
+flexpack(n)
+  -webkit-box-pack n
+  -moz-box-pack n
+  -ms-flex-pack n
+  -webkit-justify-content n
+  justify-content n
+
+boxorder(n)
+  -moz-box-ordinal-group n
+  -webkit-box-ordinal-group n
+
+flexorder(n)
+  -ms-flex-order n
+  -webkit-order n
+  order n
 
 .flexbox
   display -webkit-box
@@ -56,48 +48,133 @@ flexalign(n)
   display -moz-box
   display -ms-flexbox
   display flex
-  flexflow(row wrap)
+  flexflow(row nowrap)
   flexalign(center)
+  flexpack(center)
+
+.centered
+  text-align center
+
+.hidden
+  display none
+
+.no-decoration
+  text-decoration none
+  color currentColor 
+
+.horizontal-padding
+  padding 5
+
+.stretch
+  position absolute
+  left 0
+  top 0
+  width 100%
+  height 100%
+  margin 0
+  padding 0
+
+.gray-gradient
+  lineargradient(0deg, darkgray 50%, white 100%)
+  lineargradient(bottom, darkgray 50%, white 100%)
+  background-image -webkit-gradient(linear, left bottom, left top, color-stop(0.5, darkgray), color-stop(1, white))
+  background-position initial initial
+  background-repeat initial initial
+
+.border-box
+  border 1px solid rgb(80,80,80)
+  border-radius 2px
+  padding 10px 10px 10px 10px
+
+html
+  @extends .stretch
+
+body
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  z-index 0
+  @extends .stretch
+
+a
+  color: #00B7FF
+
+.topbar
+  z-index 1
+  margin 0 0 10 0
+  position fixed
+  width 100%
+  top calc(0%)
+  left 0%
+  @extends .gray-gradient
+
+.contents
+  position relative
+  @extends .horizontal-padding
+
+.navigation
+  list-style-type none
+  @extends .horizontal-padding
+
+.nav-element
+  @extend .no-decoration
+  @extend .border-box
+  @extend .gray-gradient
+  margin-left 5px
   
+.container footer
+  background-color lightgray2
+  text-align center
+
 // iPhone 5 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
-  header.topbar
-    height 8%
+  body
+    color white
+  .logo
+    display none
+  .navigation
+    display none
 
 // Old iPhone 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
-  header.topbar
-    height 8%
+  body
+    color white
+  .logo
+    display none
+  .navigation
+    display none
 
 // 3rd and 4th gen iPads (Retina display)
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 2)
-  header.topbar
-    height 8%
+  body
+    color white
+  .logo
+    display none
+  .navigation
+    display none
 
 // 1st and 2nd gen iPads 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 1)
-  header.topbar
-    height 8%
+  body
+    color white
+  .logo
+    display none
+  .navigation
+    display none
 
 // All iPad generations - fallback
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
-  header.topbar
-    height 8%
+  body
+    color white
+  .logo
+    display none
+  .navigation
+    display none
 
 // Desktops and laptops
 @media only screen and (min-width: 1224px)
   h1
     font-size 3em
-  .contents
-    position absolute
-    top calc(0%)
-    left calc(20%)
-  #logo
-    left calc(100%-60%)
-  #title
   .container
     margin-top 10%
+  .topbar
+    background-image none
 
-.container footer
-  background-color lightgray2
-  text-align center

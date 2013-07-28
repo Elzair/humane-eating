@@ -1,21 +1,7 @@
 define(['jquery', 'backbone', 'underscore', 'javascripts/templates'], 
     function($, Backbone, _, templates) {
   console.log(JSON.stringify(templates));
-  var 
-  //site = new Backbone.Model({
-  //  name: "Nettuts+",
-  //  url: "http://nettutsplus.com",
-  //  twitter: "envatowebdev"
-  //}),
-  //SiteView = Backbone.View.extend({
-  //  el: "#main",
-  //  template: _.template('<p><a href="<%= url %>"<%= name %></a> | <a href="http://twitter.com/<%= twitter %>"@<%= twitter %></a></p>'),
-  //  render: function() {
-  //    this.el.innerHTML = this.template(this.model.toJSON());
-  //    return this;
-  //  }
-  //}),
-  TitleModel = Backbone.Model.extend({
+  var TitleModel = Backbone.Model.extend({
     defaults: {
       title: 'Humane Eating',
     },
@@ -57,8 +43,6 @@ define(['jquery', 'backbone', 'underscore', 'javascripts/templates'],
   });
 
   return {
-    //site: site,
-    //SiteView: SiteView,
     TitleModel: TitleModel,
     TitleView: TitleView,
     ImageModel: ImageModel,
