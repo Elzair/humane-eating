@@ -10,15 +10,17 @@ block content
       section.navigation.flexbox#navbar
         li: a.nav-element(href="#") Find
         li: a.nav-element(href="#") Share
-  section.container
-    p Hello World!
-    section.page-content.flexbox
-      sidebar
-        p Sidebar Content...
-      article
-        p Article Content...
-    footer
-      p#myfooter Footer Content...
+  section.container.stretch
+    .stretch#map-canvas
+    //p Hello World!
+    //section.page-content.flexbox
+    //  sidebar
+    //    p Sidebar Content...
+    //  article
+    //    p Article Content...
+    //footer
+    //  p#myfooter Footer Content...
+  script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTv8WOV2-xUrcaAe33gI0k8zlwHMpt5_k&sensor=false")
   script.
     require(['javascripts/home'], function (home) {
       var 
@@ -37,11 +39,20 @@ block content
         model: img_m,
         el: '#logo'
       });
+      function initialize() {
+        var map_options = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'), map_options);
+      }
       $(document).ready(function() {
+        initialize();
         function logdata(data) {
           console.log(data);
         }
-        url = 'http://dev.vegtable.co/api/locations/23?jsonp=logdata'; 
+        url = 'http://localhost:3000/api/locations/23?json=locationInfo'; 
         $.getJSON(url)
         .done(function(data) {
           console.log(data);
