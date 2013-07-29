@@ -16,10 +16,6 @@ var jam = {
             "main": "dist/jquery.js"
         },
         {
-            "name": "modernizr",
-            "location": "javascripts/jam/modernizr"
-        },
-        {
             "name": "underscore",
             "location": "javascripts/jam/underscore",
             "main": "underscore.js"
@@ -59,10 +55,6 @@ if (typeof require !== "undefined" && require.config) {
             "main": "dist/jquery.js"
         },
         {
-            "name": "modernizr",
-            "location": "javascripts/jam/modernizr"
-        },
-        {
             "name": "underscore",
             "location": "javascripts/jam/underscore",
             "main": "underscore.js"
@@ -99,10 +91,6 @@ else {
             "name": "jquery",
             "location": "javascripts/jam/jquery",
             "main": "dist/jquery.js"
-        },
-        {
-            "name": "modernizr",
-            "location": "javascripts/jam/modernizr"
         },
         {
             "name": "underscore",

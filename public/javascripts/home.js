@@ -1,64 +1,33 @@
-define(['jquery', 'backbone', 'underscore', 'javascripts/templates'], 
-    function($, Backbone, _, templates) {
-  // Define models
-  var TitleModel = Backbone.Model.extend({
-    defaults: {
-      title: 'Humane Eating',
-    },
-    initialize: function() {}
-  }),
-  ImageModel = Backbone.Model.extend({
-    defaults: {
-      src: '',
-      caption: '',
-      classes: '',
-      hidden: true
-    },
-    initialize: function() {}
-  }),
-  CoordinatesModel = Backbone.Model.extend({
-    defaults: {
-      latitude: 0.0,
-      longitude: 0.0
-    },
-    initialize: function() {}
-  }),
-  LocationModel = Backbone.Model.extend({
-    initialize: function() {}
-  }),
-
-  // Define views
-  TitleView = Backbone.View.extend({
-    template: templates.title,
-    initialize: function() {
-      this.render();
-    },
-    render: function() {
-      var html = _.template(this.template, this.model.toJSON());
-      $(this.el).html(html);
-      return this;
-    }
-  }),
-  ImageView = Backbone.View.extend({
-    template: templates.image,
-    initialize: function() {
-      this.render();
-    },
-    render: function() {
-      this.model.set({classes: this.model.get('hidden') ? 'hidden' : ''});
-      var html = _.template(this.template, this.model.toJSON());
-      $(this.el).html(html);
-      return this;
-    }
+define(['javascripts/mvc'], function(mvc) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    console.log(latitude+" "+longitude);
   });
-
-  // Return constructors for models and views
-  return {
-    TitleModel: TitleModel,
-    ImageModel: ImageModel,
-    CoordinatesModel: CoordinatesModel,
-    LocationModel: LocationModel,
-    TitleView: TitleView,
-    ImageView: ImageView
-  };
+  var 
+  title_m = new mvc.TitleModel({title: 'Humane Eating'}),
+  img_m = new mvc.ImageModel({
+    src: '/images/america_for_animals_60x60.png',
+    caption: 'America For Animals logo',
+    hidden: false
+  }),
+  coord_m = new mvc.CoordinatesModel({}),
+  loc_m = new mvc.LocationModel({}),
+  title_v = new mvc.TitleView({
+    model: title_m, 
+    el: '#title'
+  }),
+  img_v = new mvc.ImageView({
+    model: img_m,
+    el: '#logo'
+  });
+  function init_gm() {
+    var map_options = {
+      center: new google.maps.LatLng(-34.397, 150.644),
+      zoom: 8,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById('map-canvas'), map_options);
+  }
+  return { init_gm: init_gm };
 });
