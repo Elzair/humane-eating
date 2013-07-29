@@ -6,9 +6,18 @@ var jam = {
             "main": "backbone.js"
         },
         {
+            "name": "backbone-localStorage",
+            "location": "javascripts/jam/backbone-localStorage",
+            "main": "main.js"
+        },
+        {
             "name": "jquery",
             "location": "javascripts/jam/jquery",
             "main": "dist/jquery.js"
+        },
+        {
+            "name": "modernizr",
+            "location": "javascripts/jam/modernizr"
         },
         {
             "name": "underscore",
@@ -16,7 +25,7 @@ var jam = {
             "main": "underscore.js"
         }
     ],
-    "version": "0.2.15",
+    "version": "0.2.17",
     "shim": {
         "backbone": {
             "deps": [
@@ -40,9 +49,18 @@ if (typeof require !== "undefined" && require.config) {
             "main": "backbone.js"
         },
         {
+            "name": "backbone-localStorage",
+            "location": "javascripts/jam/backbone-localStorage",
+            "main": "main.js"
+        },
+        {
             "name": "jquery",
             "location": "javascripts/jam/jquery",
             "main": "dist/jquery.js"
+        },
+        {
+            "name": "modernizr",
+            "location": "javascripts/jam/modernizr"
         },
         {
             "name": "underscore",
@@ -73,9 +91,18 @@ else {
             "main": "backbone.js"
         },
         {
+            "name": "backbone-localStorage",
+            "location": "javascripts/jam/backbone-localStorage",
+            "main": "main.js"
+        },
+        {
             "name": "jquery",
             "location": "javascripts/jam/jquery",
             "main": "dist/jquery.js"
+        },
+        {
+            "name": "modernizr",
+            "location": "javascripts/jam/modernizr"
         },
         {
             "name": "underscore",

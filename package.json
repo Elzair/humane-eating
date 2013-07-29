@@ -21,7 +21,8 @@
       "jquery": "*",
       "underscore": "*",
       "backbone": "*",
-      "backbone-localStorage": "*"
+      "backbone-localStorage": "*",
+      "modernizr": "*"
     }
   }
 }
