@@ -121,6 +121,7 @@ a
 
 .container
   z-index 1
+  margin-top 10%
 
 .contents
   position relative
@@ -146,6 +147,8 @@ a
     display none
   .navigation
     display none
+  .container
+    margin-top 8%
 
 // Old iPhone 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
@@ -157,7 +160,7 @@ a
   .navigation
     display none
   .container
-    margin-top 20%
+    margin-top 8%
 
 // 3rd and 4th gen iPads (Retina display)
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 2)
@@ -169,7 +172,7 @@ a
   .navigation
     display none
   .container
-    margin-top 20%
+    margin-top 10%
 
 // 1st and 2nd gen iPads 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 1)
@@ -181,7 +184,7 @@ a
   .navigation
     display none
   .container
-    margin-top 20%
+    margin-top 10%
 
 // All iPad generations - fallback
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
@@ -193,12 +196,14 @@ a
   .navigation
     display none
   .container
-    margin-top 20%
+    margin-top 10%
 
 // Desktops and laptops
 @media only screen and (min-width: 1224px)
   h1
     font-size 3em
+  .title
+    adjustmargins(0.5em)
   .topbar
     background-image none
   .container
