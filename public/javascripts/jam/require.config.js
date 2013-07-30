@@ -37,11 +37,8 @@ var jam = {
         },
         "backbone-query-parameters": {
             "deps": [
-                "backbone",
-                "underscore",
-                "jquery"
-            ],
-            "exports": "Backbone.QueryParams"
+                "backbone"
+            ]
         },
         "underscore": {
             "exports": "_"
@@ -88,11 +85,8 @@ if (typeof require !== "undefined" && require.config) {
         },
         "backbone-query-parameters": {
             "deps": [
-                "backbone",
-                "underscore",
-                "jquery"
-            ],
-            "exports": "Backbone.QueryParams"
+                "backbone"
+            ]
         },
         "underscore": {
             "exports": "_"
@@ -139,11 +133,8 @@ else {
         },
         "backbone-query-parameters": {
             "deps": [
-                "backbone",
-                "underscore",
-                "jquery"
-            ],
-            "exports": "Backbone.QueryParams"
+                "backbone"
+            ]
         },
         "underscore": {
             "exports": "_"

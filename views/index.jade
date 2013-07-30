@@ -5,7 +5,7 @@ block content
     .contents.flexbox
       section.brand.flexbox
         .logo#logo
-          img(src="/images/america_for_animals_transparent.png", alt="America for Animals logo")
+          img(src="/images/america_for_animals_60x60.png", alt="America for Animals logo")
         h1.title#title Humane Eating 
         a(href="#/api/locations/search?lat=33.5252544&long=-82.1346749") Click Me!
       section.navigation.flexbox#navbar
@@ -17,14 +17,6 @@ block content
   script.
     require(['javascripts/home'], function (home) {
       $(document).ready(function() {
-        home.init_gm(home.coord_m.get('latitude'), home.coord_m.get('longitude'));
-        //url = 'http://localhost:3000/api/location/23?json=locationInfo'; 
-        //$.getJSON(url)
-        //.done(function(data) {
-        //  console.log(data);
-        //})
-        //.fail(function(err) {
-        //  console.log(err);
-        //});
+        home.initialize();
       });
     });

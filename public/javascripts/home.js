@@ -15,8 +15,62 @@ define(['javascripts/mvc'], function(mvc) {
   img_v = new mvc.ImageView({
     model: img_m,
     el: '#logo'
+  }),
+
+  // Declare collection
+  loc_c,
+
+  // Instantiate route
+  app_router = new mvc.AppRouter();
+
+  // Populate routes
+  app_router.on('route:search', function(params) {
+    var url = '/api/locations/search';
+    if (params !== undefined) {
+      console.log(JSON.stringify(params));
+      var queries = [];
+      var p;
+      for (p in params) {
+        if (params.hasOwnProperty(p)) {
+          queries.push(p+'='+params[p]);
+        }
+      }
+      url = url + '?' + queries.join('&');
+    }
+    $.getJSON(url)
+    .done(function(data) {
+      //var results = JSON.parse(data);
+      loc_c = new mvc.LocationCollection(data.locations);
+      console.log(JSON.stringify(loc_c));
+    })
+    .fail(function(err) {
+      console.log(err);
+    });
   });
 
+  app_router.on('route:get_loc', function(id, name, params) {
+    console.log('You got here!');
+    var url = '/api/locations/'+id;
+    if (params !== undefined) {
+      var queries = [];
+      var p;
+      for (p in params) {
+        if (params.hasOwnProperty(p)) {
+          queries.push(p+'='+params[p]);
+        }
+      }
+      url = url + '?' + queries.join('&');
+    }
+    $.getJSON(url)
+    .done(function(data) {
+      console.log(JSON.stringify(data));
+    })
+    .fail(function(err) {
+      console.log(err);
+    });    
+  });
+  
+  // This function creates a new Google Map at the given coordinates.
   function init_gm(latitude, longitude) {
     var map_options = {
       center: new google.maps.LatLng(latitude, longitude),
@@ -25,14 +79,22 @@ define(['javascripts/mvc'], function(mvc) {
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'), map_options);
   }
-  
-  navigator.geolocation.getCurrentPosition(function(position) {
-    //var latitude = position.coords.latitude;
-    //var longitude = position.coords.longitude;
-    //console.log(latitude+" "+longitude);
-    coord_m.set('latitude', position.coords.latitude);
-    coord_m.set('longitude', position.coords.longitude); 
-    console.log(coord_m.get('latitude')+' '+coord_m.get('longitude'));
+ 
+  // This function creates a new Google Map at the user's current location 
+  var initialize = function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      coord_m.set('latitude', position.coords.latitude);
+      coord_m.set('longitude', position.coords.longitude); 
+      console.log(coord_m.get('latitude')+' '+coord_m.get('longitude'));
+      init_gm(coord_m.get('latitude'), coord_m.get('longitude'));
+    });
+  };
+
+  // Start backbone's history module as soon as DOM finishes loading
+  $(function() {
+    Backbone.history.start();
   });
-  return { coord_m: coord_m, init_gm: init_gm };
+
+  // Return initialization function
+  return { initialize: initialize };
 });

@@ -39,6 +39,11 @@ define(['jquery', 'backbone-query-parameters', 'backbone', 'underscore'],
     initialize: function() {}
   }),
 
+  // Define collections
+  LocationCollection = Backbone.Collection.extend({
+    model: LocationModel
+  }),
+
   // Define views
   TitleView = Backbone.View.extend({
     template: templates.title,
@@ -73,56 +78,6 @@ define(['jquery', 'backbone-query-parameters', 'backbone', 'underscore'],
     }
   });
 
-  // Instantiate route
-  var app_router = new AppRouter();
-
-  // Populate routes
-  app_router.on('route:search', function(params) {
-    var url = '/api/locations/search';
-    if (params !== undefined) {
-      console.log(JSON.stringify(params));
-      var queries = [];
-      var p;
-      for (p in params) {
-        if (params.hasOwnProperty(p)) {
-          queries.push(p+'='+params[p]);
-        }
-      }
-      url = url + '?' + queries.join('&');
-    }
-    $.getJSON(url)
-    .done(function(data) {
-      console.log(JSON.stringify(data));
-    })
-    .fail(function(err) {
-      console.log(err);
-    });
-  });
-
-  app_router.on('route:get_loc', function(id, name, params) {
-    console.log('You got here!');
-    var url = '/api/locations/'+id;
-    if (params !== undefined) {
-      var queries = [];
-      var p;
-      for (p in params) {
-        if (params.hasOwnProperty(p)) {
-          queries.push(p+'='+params[p]);
-        }
-      }
-      url = url + '?' + queries.join('&');
-    }
-    $.getJSON(url)
-    .done(function(data) {
-      console.log(JSON.stringify(data));
-    })
-    .fail(function(err) {
-      console.log(err);
-    });    
-  });
-  
-  // Start backbone's history module
-  Backbone.history.start();
 
   // Return constructors for models and views
   return {
@@ -130,8 +85,9 @@ define(['jquery', 'backbone-query-parameters', 'backbone', 'underscore'],
     ImageModel: ImageModel,
     CoordinatesModel: CoordinatesModel,
     LocationModel: LocationModel,
+    LocationCollection: LocationCollection,
     TitleView: TitleView,
     ImageView: ImageView,
-    app_router: app_router
+    AppRouter: AppRouter
   };
 });
