@@ -2012,6 +2012,11 @@ var jam = {
             "main": "main.js"
         },
         {
+            "name": "backbone-query-parameters",
+            "location": "javascripts/jam/backbone-query-parameters",
+            "main": "backbone.queryparams.js"
+        },
+        {
             "name": "jquery",
             "location": "javascripts/jam/jquery",
             "main": "dist/jquery.js"
@@ -2030,6 +2035,14 @@ var jam = {
                 "jquery"
             ],
             "exports": "Backbone"
+        },
+        "backbone-query-parameters": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "Backbone.QueryParams"
         },
         "underscore": {
             "exports": "_"
@@ -2051,6 +2064,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "main.js"
         },
         {
+            "name": "backbone-query-parameters",
+            "location": "javascripts/jam/backbone-query-parameters",
+            "main": "backbone.queryparams.js"
+        },
+        {
             "name": "jquery",
             "location": "javascripts/jam/jquery",
             "main": "dist/jquery.js"
@@ -2068,6 +2086,14 @@ if (typeof require !== "undefined" && require.config) {
                 "jquery"
             ],
             "exports": "Backbone"
+        },
+        "backbone-query-parameters": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "Backbone.QueryParams"
         },
         "underscore": {
             "exports": "_"
@@ -2089,6 +2115,11 @@ else {
             "main": "main.js"
         },
         {
+            "name": "backbone-query-parameters",
+            "location": "javascripts/jam/backbone-query-parameters",
+            "main": "backbone.queryparams.js"
+        },
+        {
             "name": "jquery",
             "location": "javascripts/jam/jquery",
             "main": "dist/jquery.js"
@@ -2106,6 +2137,14 @@ else {
                 "jquery"
             ],
             "exports": "Backbone"
+        },
+        "backbone-query-parameters": {
+            "deps": [
+                "backbone",
+                "underscore",
+                "jquery"
+            ],
+            "exports": "Backbone.QueryParams"
         },
         "underscore": {
             "exports": "_"
