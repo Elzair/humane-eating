@@ -1,5 +1,5 @@
-define(['jquery', 'backbone', 'underscore'], 
-    function($, Backbone, _) {
+define(['jquery', 'javascripts/backbone.queryparams', 'backbone', 'underscore'], 
+    function($, qp, Backbone, _) {
   // Define the underscore templates used to render the views
   var templates = {
     title: '<%= title %>',
@@ -62,6 +62,61 @@ define(['jquery', 'backbone', 'underscore'],
       $(this.el).html(html);
       return this;
     }
+  }),
+
+  // Define routes
+  AppRouter = Backbone.Router.extend({
+    routes: {
+      'api/locations/search': 'search',
+      'api/locations/:id/:name': 'get_loc',
+      '*actions': 'default_route'
+    }
+  });
+
+  // Instantiate route
+  var app_router = new AppRouter();
+
+  // Populate routes
+  app_router.on('route:search', function(params) {
+    var url = '/api/locations/search';
+    if (params !== undefined) {
+      var queries = [];
+      var p;
+      for (p in params) {
+        if (params.hasOwnProperty(p)) {
+          queries.push(p+'='+params[p]);
+        }
+      }
+      url = url + '?' + queries.join('&');
+    }
+    $.getJSON(url)
+    .done(function(data) {
+      console.log(JSON.stringify(data));
+    })
+    .fail(function(err) {
+      console.log(err);
+    });
+  });
+
+  app_router.on('route:get_loc', function(id, name, params) {
+    var url = '/api/locations/'+id+'/'+name;
+    if (params !== undefined) {
+      var queries = [];
+      var p;
+      for (p in params) {
+        if (params.hasOwnProperty(p)) {
+          queries.push(p+'='+params[p]);
+        }
+      }
+      url = url + '?' + queries.join('&');
+    }
+    $.getJSON(url)
+    .done(function(data) {
+      console.log(JSON.stringify(data));
+    })
+    .fail(function(err) {
+      console.log(err);
+    });    
   });
 
   // Return constructors for models and views
@@ -71,6 +126,7 @@ define(['jquery', 'backbone', 'underscore'],
     CoordinatesModel: CoordinatesModel,
     LocationModel: LocationModel,
     TitleView: TitleView,
-    ImageView: ImageView
+    ImageView: ImageView,
+    app_router: app_router
   };
 });
