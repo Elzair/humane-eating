@@ -1,9 +1,4 @@
 define(['javascripts/mvc'], function(mvc) {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    console.log(latitude+" "+longitude);
-  });
   var 
   title_m = new mvc.TitleModel({title: 'Humane Eating'}),
   img_m = new mvc.ImageModel({
@@ -21,13 +16,23 @@ define(['javascripts/mvc'], function(mvc) {
     model: img_m,
     el: '#logo'
   });
-  function init_gm() {
+
+  function init_gm(latitude, longitude) {
     var map_options = {
-      center: new google.maps.LatLng(-34.397, 150.644),
+      center: new google.maps.LatLng(latitude, longitude),
       zoom: 8,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'), map_options);
   }
-  return { init_gm: init_gm };
+  
+  navigator.geolocation.getCurrentPosition(function(position) {
+    //var latitude = position.coords.latitude;
+    //var longitude = position.coords.longitude;
+    //console.log(latitude+" "+longitude);
+    coord_m.set('latitude', position.coords.latitude);
+    coord_m.set('longitude', position.coords.longitude); 
+    console.log(coord_m.get('latitude')+' '+coord_m.get('longitude'));
+  });
+  return { coord_m: coord_m, init_gm: init_gm };
 });

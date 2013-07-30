@@ -1,4 +1,4 @@
-define(['jquery', 'javascripts/backbone.queryparams', 'backbone', 'underscore'], 
+define(['jquery', 'backbone-query-parameters', 'backbone', 'underscore'], 
     function($, qp, Backbone, _) {
   // Define the underscore templates used to render the views
   var templates = {
@@ -68,7 +68,7 @@ define(['jquery', 'javascripts/backbone.queryparams', 'backbone', 'underscore'],
   AppRouter = Backbone.Router.extend({
     routes: {
       'api/locations/search': 'search',
-      'api/locations/:id/:name': 'get_loc',
+      'api/locations/:id': 'get_loc',
       '*actions': 'default_route'
     }
   });
@@ -80,6 +80,7 @@ define(['jquery', 'javascripts/backbone.queryparams', 'backbone', 'underscore'],
   app_router.on('route:search', function(params) {
     var url = '/api/locations/search';
     if (params !== undefined) {
+      console.log(JSON.stringify(params));
       var queries = [];
       var p;
       for (p in params) {
@@ -99,7 +100,8 @@ define(['jquery', 'javascripts/backbone.queryparams', 'backbone', 'underscore'],
   });
 
   app_router.on('route:get_loc', function(id, name, params) {
-    var url = '/api/locations/'+id+'/'+name;
+    console.log('You got here!');
+    var url = '/api/locations/'+id;
     if (params !== undefined) {
       var queries = [];
       var p;
@@ -118,6 +120,9 @@ define(['jquery', 'javascripts/backbone.queryparams', 'backbone', 'underscore'],
       console.log(err);
     });    
   });
+  
+  // Start backbone's history module
+  Backbone.history.start();
 
   // Return constructors for models and views
   return {
