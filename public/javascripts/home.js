@@ -16,21 +16,24 @@ define(['javascripts/mvc'], function(mvc) {
     model: img_m,
     el: '#logo'
   }),
+  
+  // Declare variable to hold Google Map
+  map,
 
   // variable to hold Google Maps info window
   info_window,
 
   // Declare collection
   loc_c = new mvc.LocationCollection([]);
+
   loc_c.on('add', function(loc) {
+    console.log('Got here: '+JSON.stringify(loc));
     var marker_pos = new google.maps.LatLng(loc.get('latitude'),loc.get('longitude'));
-    console.log(JSON.stringify(marker_pos));
     var marker = new google.maps.Marker({
       position: marker_pos,
       map: map,
       title: loc.get('name')
     });
-    //console.log('Got here: '+JSON.stringify(loc));
     google.maps.event.addListener(marker, 'click', function() {
       info_window = new google.maps.InfoWindow({
         content: _.template(mvc.templates.infwin, loc)
@@ -88,21 +91,18 @@ define(['javascripts/mvc'], function(mvc) {
     });    
   });
 
-  // Declare variable to hold Google Map
-  var map;
-  
   // This function creates a new Google Map at the given coordinates.
   function init_gm(latitude, longitude) {
     var map_options = {
       center: new google.maps.LatLng(latitude, longitude),
-      zoom: 10,
+      zoom: 9,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), map_options);
 
     // Get surrounding locations
-    var url = '/api/locations/search?lat=' + coord_m.get('latitude') +
-      '&long=' + coord_m.get('longitude');
+    var url = '/api/locations/search?lat=' + latitude +
+      '&long=' + longitude;
     app_router.navigate(url, true);
   }
  
