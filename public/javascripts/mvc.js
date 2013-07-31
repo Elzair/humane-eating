@@ -1,9 +1,12 @@
-define(['jquery', 'backbone-query-parameters', 'backbone', 'underscore'], 
-    function($, qp, Backbone, _) {
+define(['jquery', 'backbone-localStorage', 'backbone-query-parameters', 
+    'backbone', 'underscore'], function($, localStorage, qp, Backbone, _) {
   // Define the underscore templates used to render the views
   var templates = {
     title: '<%= title %>',
-    image: '<img src="<%= src %>" alt="<%= caption %>" class="<%=  classes %>">'
+    image: '<img src="<%= src %>" alt="<%= caption %>" class="<%=  classes %>">',
+    infwin: '<div id="content"><div id="siteNotice"></div><h2 id="firstHeading" class="firstHeading"><%= name %></h2>'+
+            '<div id="bodyContent"><p><%= tagline %></p><p><%= address1 %> <%= address2 %> <%= city %>, <%= region %>'+
+            ' <%= country %></p><p><%= phone %></p><p><%= distance %></p></div>'
   },
 
   // Define models
@@ -23,6 +26,7 @@ define(['jquery', 'backbone-query-parameters', 'backbone', 'underscore'],
     initialize: function() {}
   }),
   CoordinatesModel = Backbone.Model.extend({
+    localStorage: new Backbone.LocalStorage('CoordinatesModel'),
     defaults: {
       latitude: 0.0,
       longitude: 0.0
@@ -32,14 +36,12 @@ define(['jquery', 'backbone-query-parameters', 'backbone', 'underscore'],
   LocationModel = Backbone.Model.extend({
     initialize: function() {}
   }),
-  SearchModel = Backbone.Model.extend({
-    defaults: {
-      text: ''
-    },
-    initialize: function() {}
-  }),
 
   // Define collections
+  CoordinatesCollection = Backbone.Collection.extend({
+    localStorage: new Backbone.LocalStorage("CoordinatesCollection"),
+    model: CoordinatesModel
+  }),
   LocationCollection = Backbone.Collection.extend({
     model: LocationModel
   }),
@@ -81,10 +83,12 @@ define(['jquery', 'backbone-query-parameters', 'backbone', 'underscore'],
 
   // Return constructors for models and views
   return {
+    templates: templates,
     TitleModel: TitleModel,
     ImageModel: ImageModel,
     CoordinatesModel: CoordinatesModel,
     LocationModel: LocationModel,
+    CoordinatesCollection: CoordinatesCollection,
     LocationCollection: LocationCollection,
     TitleView: TitleView,
     ImageView: ImageView,
