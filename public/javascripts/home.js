@@ -27,17 +27,24 @@ define(['javascripts/mvc'], function(mvc) {
   loc_c = new mvc.LocationCollection([]);
 
   loc_c.on('add', function(loc) {
-    console.log('Got here: '+JSON.stringify(loc));
+    //console.log('Got here: '+JSON.stringify(loc));
+    var self = this; // Store reference to Collection
+    var loc_id = loc.id; // Store reference to location id
+    //console.log('Id: '+loc_id);
     var marker_pos = new google.maps.LatLng(loc.get('latitude'),loc.get('longitude'));
     var marker = new google.maps.Marker({
       position: marker_pos,
       map: map,
       title: loc.get('name')
     });
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker, 'click', function(loc) {
+      var loc_info = self.get(loc_id);
+      console.log(JSON.stringify(loc_info.attributes));
+      var html = _.template(mvc.templates.infwin, loc_info.attributes);
       info_window = new google.maps.InfoWindow({
-        content: _.template(mvc.templates.infwin, loc)
+        content: html
       });
+      info_window.open(map, marker);
     });
   });
 
@@ -61,6 +68,13 @@ define(['javascripts/mvc'], function(mvc) {
     $.getJSON(url)
     .done(function(data) {
       //var results = JSON.parse(data);
+      // Set id attribute of all locations
+      var i;
+      for (i in data.locations) {
+        if (data.locations.hasOwnProperty(i)) {
+          data.locations[i].id = data.locations[i].locationId;
+        }
+      }
       loc_c.add(data.locations);
       //console.log(JSON.stringify(loc_c));
     })
