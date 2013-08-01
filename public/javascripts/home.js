@@ -1,22 +1,33 @@
 define(['javascripts/mvc'], function(mvc) {
   var 
   title_m = new mvc.TitleModel({title: 'Humane Eating'}),
+
   img_m = new mvc.ImageModel({
     src: '/images/america_for_animals_60x60.png',
     caption: 'America For Animals logo',
     hidden: false
   }),
+
   coord_m = new mvc.CoordinatesModel({}),
+
   //loc_m = new mvc.LocationModel({}),
   title_v = new mvc.TitleView({
     model: title_m, 
     el: '#title'
   }),
+
   img_v = new mvc.ImageView({
     model: img_m,
     el: '#logo'
   }),
-  
+
+  loc_v = new mvc.LocationView({
+    model: null,
+    el: null
+  });
+
+
+  var
   // Declare variable to hold Google Map
   map,
 
@@ -113,6 +124,14 @@ define(['javascripts/mvc'], function(mvc) {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), map_options);
+
+    // Add event listener to call search route when the current location changes
+    google.maps.event.addListener(map, 'center_changed', function() {
+
+      var url = '/api/locations/search?lat=' + map.getCenter().lat() + 
+                '&long=' + map.getCenter().lng();
+      app_router.navigate(url, true);
+    });
 
     // Get surrounding locations
     var url = '/api/locations/search?lat=' + latitude +

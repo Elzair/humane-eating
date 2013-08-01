@@ -68,6 +68,14 @@ define(['jquery', 'backbone-query-parameters',
       return this;
     }
   }),
+  LocationView = Backbone.View.extend({
+    template: templates.infwin,
+    initialize: function() {},
+    render: function() {
+      var html = _.template(this.template, this.model.toJSON());
+      return html;
+    }
+  }),
 
   // Define routes
   AppRouter = Backbone.Router.extend({
@@ -90,6 +98,7 @@ define(['jquery', 'backbone-query-parameters',
     LocationCollection: LocationCollection,
     TitleView: TitleView,
     ImageView: ImageView,
+    LocationView: LocationView,
     AppRouter: AppRouter
   };
 });
