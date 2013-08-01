@@ -1,0 +1,36 @@
+{
+  "name": "backbone-query-parameters",
+  "version": "1.0.0",
+  "description": "A plugin for backbone which will allow for URL parameters to be passed into routes",
+  "homepage": "https://github.com/jhudson8/backbone-query-parameters",
+  "keywords": [
+    "backbone",
+    "query",
+    "query-parameters",
+    "query-params",
+    "params"
+  ],
+  "jam": {
+    "main": "backbone.queryparams.js",
+    "dependencies": {
+      "backbone": ">=0.9.2"
+    },
+    "shim": {
+      "deps": ["backbone"]
+    }
+  },
+  "bugs": {
+    "web": "https://github.com/jhudson8/backbone-query-parameters/issues" 
+  },
+  "licenses": [{
+      "type": "Open",
+      "url": "https://github.com/jhudson8/backbone-query-parameters/blob/master/LICENSE"
+    }
+  ],
+  "repositories": [{
+      "type": "git", 
+      "url": "git@github.com:jhudson8/backbone-query-parameters.git"
+    }
+  ],
+  "github": "https://github.com/jhudson8/backbone-query-parameters.git"
+}
