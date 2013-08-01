@@ -1,6 +1,6 @@
 {
   "name": "humane-eating",
-  "version": "0.0.5",
+  "version": "0.5.1",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -27,6 +27,6 @@
   },
   "subdomain": "humane-eating",
   "engines": {
-    "node": "0.10.x"
+    "node": "0.8.x"
   }
 }
