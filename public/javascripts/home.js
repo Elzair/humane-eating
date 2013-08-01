@@ -52,6 +52,11 @@ define(['javascripts/mvc'], function(mvc) {
       var loc_info = self.get(loc_id);
       console.log(JSON.stringify(loc_info.attributes));
       var html = _.template(mvc.templates.infwin, loc_info.attributes);
+
+      // Close info_window if it is already open
+      if (info_window) {
+        info_window.close();
+      }
       info_window = new google.maps.InfoWindow({
         content: html
       });
