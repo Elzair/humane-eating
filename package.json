@@ -1,6 +1,6 @@
 {
   "name": "humane-eating",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -8,11 +8,7 @@
   "dependencies": {
     "express": "3.3.4",
     "jade": "*",
-    "stylus": "*",
-    "fluidity": "*",
-    "ender-js": "*",
-    "jeesh": "*",
-    "reqwest": "*"
+    "stylus": "*"
   },
   "jam": {
     "packageDir": "public/javascripts/jam",
