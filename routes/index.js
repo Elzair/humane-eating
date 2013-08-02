@@ -6,7 +6,7 @@ var http = require('http')
  */
 
 exports.index = function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Humane Eating' });
 };
 
 exports.location = function(req, res) {
