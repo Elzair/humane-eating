@@ -37,6 +37,8 @@ define(['javascripts/mvc', 'javascripts/infobubble-compiled'], function(mvc) {
   // Declare collection
   loc_c = new mvc.LocationCollection([]);
 
+  // Add a marker for each new location and an event
+  // listener to open an InfoBubble when the user clicks that marker
   loc_c.on('add', function(loc) {
     //console.log('Got here: '+JSON.stringify(loc));
     var self = this; // Store reference to Collection
@@ -46,6 +48,7 @@ define(['javascripts/mvc', 'javascripts/infobubble-compiled'], function(mvc) {
     var marker = new google.maps.Marker({
       position: marker_pos,
       map: map,
+      animation: google.maps.Animation.DROP,
       title: loc.get('name')
     });
     google.maps.event.addListener(marker, 'click', function(loc) {
