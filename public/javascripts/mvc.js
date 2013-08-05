@@ -5,8 +5,8 @@ define(['jquery', 'backbone-query-parameters',
     title: '<%= title %>',
     image: '<img src="<%= src %>" alt="<%= caption %>" class="<%=  classes %>">',
     infwin: '<div id="content"><div id="siteNotice"></div><h2 id="firstHeading" class="firstHeading"><%= name %></h2>'+
-            '<div id="bodyContent"><p><%= tagline %></p><p><%= address1 %> <%= address2 %> <%= city %>, <%= region %>'+
-            ' <%= country %></p><p><%= phone %></p><p><%= distance %> miles</p></div>'
+            '<div id="bodyContent"><p><%= tagline %></p><p><%= address1 %> <%= address2 %></p><p><%= city %>, '+
+            '<%= region %> <%= country %></p><p><%= phone %></p><p><%= distance %> miles</p></div>'
   },
 
   // Define models
