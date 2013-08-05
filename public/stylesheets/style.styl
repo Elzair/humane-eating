@@ -36,7 +36,9 @@ flexpack(n)
   -webkit-box-pack n
   -moz-box-pack n
   -ms-flex-pack n
+  -webkit-justify-content flex-{n}
   -webkit-justify-content n
+  justify-content flex-{n}
   justify-content n
 
 boxorder(n)
@@ -54,9 +56,26 @@ flexorder(n)
   display -moz-box
   display -ms-flexbox
   display flex
+
+.flexrow
   flexflow(row nowrap)
+
+.flexcol
+  flexflow(column nowrap)
+
+.flexcenter
   flexalign(center)
   flexpack(center)
+
+.align-left
+  flex-item-align start
+  -webkit-align-self start
+  align-self start
+
+.align-right
+  flex-item-align end
+  -webkit-align-self end
+  align-self end
 
 .centered
   text-align center
@@ -72,11 +91,10 @@ flexorder(n)
   padding 5
 
 .stretch
-  position absolute
   left 0
   top 0
   width 100%
-  height 115%
+  height 100%
   margin 0
   padding 0
 
@@ -88,13 +106,13 @@ flexorder(n)
   lineargradient(0deg, darkgray 50%, white 100%)
   lineargradient(bottom, darkgray 50%, white 100%)
   background-image -webkit-gradient(linear, left bottom, left top, color-stop(0.5, darkgray), color-stop(1, white))
-  @extends .gradient
+  @extend .gradient
 
 .burgundy-gradient
   lineargradient(0deg, burgundya 50%, burgundyb 100%)
   lineargradient(bottom, burgundya 50%, burgundyb 100%)
   background-image -webkit-gradient(linear, left bottom, left top, color-stop(0.5, burgundya), color-stop(1, burgundyb))
-  @extends .gradient
+  @extend .gradient
 
 .border-box
   border 1px solid rgb(80,80,80)
@@ -102,43 +120,64 @@ flexorder(n)
   padding 10px 10px 10px 10px
 
 html
-  @extends .stretch
+  @extend .stretch
 
 body
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
-  @extends .stretch
+  @extend .stretch
+  //@extend .flexbox
+  //@extend .flexcol
 
 a
   color: #00B7FF
 
 .topbar
-  position fixed
+  @extend .flexbox
+  @extend .flexrow
+  @extend .flexcenter
+  //position fixed
   width 100%
-  top calc(0%)
-  left 0%
-  z-index 2
-  @extends .burgundy-gradient
-
-.container
-  z-index 1
-  margin-top 10%
-  height 70%
+  //top calc(0%)
+  //left 0%
+  //z-index 2
+  @extend .burgundy-gradient
 
 .contents
-  position relative
-  height 70%
-  @extends .horizontal-padding
+  @extend .flexbox
+  @extend .flexrow
+  @extend .flexcenter
+  //position relative
+  //height 70%
+  //@extend .horizontal-padding
+
+.brand
+  @extend .flexbox
+  @extend .flexrow
+  @extend .flexcenter
 
 .navigation
   list-style-type none
-  @extends .horizontal-padding
+  @extend .horizontal-padding
 
 .nav-element
   @extend .no-decoration
   @extend .border-box
   @extend .gray-gradient
-  margin-left 5px
-  
+  //margin-left 5px
+
+.search
+  @extend .nav-element
+  @extend .align-left
+
+.list
+  @extend .nav-element
+  @extend .align-right
+
+.container
+  @extend .stretch
+
+.map
+  @extend .stretch
 
 // iPhone 5 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
@@ -149,8 +188,16 @@ a
     display none
   .navigation
     display none
+    
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait)
   .container
-    margin-top 8%
+  .map
+    height calc(102%)
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait)
+  .container
+  .map
+    height calc(100%)
 
 // Old iPhone 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
@@ -183,8 +230,6 @@ a
     display none
   .navigation
     display none
-  .container
-    margin-top 10%
 
 // 1st and 2nd gen iPads 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 1)
@@ -195,8 +240,6 @@ a
     display none
   .navigation
     display none
-  .container
-    margin-top 10%
 
 // All iPad generations - fallback
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
@@ -207,19 +250,14 @@ a
     display none
   .navigation
     display none
-  .container
-    margin-top 10%
 
 // Desktops and laptops
 @media only screen and (min-width: 1224px)
-  body
-    overflow hidden
+  //body
+  //  overflow hidden
   h1
     font-size 3em
   .title
     adjustmargins(0.5em)
   .topbar
     background-image none
-  .container
-    margin-top 10%
-    overflow hidden

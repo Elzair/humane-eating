@@ -2,8 +2,8 @@ doctype 5
 html
   head
     title= title
-    //meta(name="apple-mobile-web-app-capable", content="yes")
-    //meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
+    meta(name="apple-mobile-web-app-capable", content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="apple-touch-icon", size="144x144", href="/images/apple-touch-icon-144x144.png")
     link(rel="apple-touch-icon", size="114x114", href="/images/apple-touch-icon-114x114.png")
@@ -12,11 +12,14 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(type='text/javascript', src='/javascripts/jam/require.js')
     script.
-      // Hide browser address bar
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          window.scrollTo(0, 0);
-        }, 0);
-      });
+      // Hide browser address bar on mobiles
+      if ((navigator.userAgent.match(/iPhone/i)) || 
+        (navigator.userAgent.match(/iPod/i))) {
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            window.scrollTo(0, 0);
+          }, 0);
+        });
+      }
   body
     block content

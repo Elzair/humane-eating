@@ -1,9 +1,9 @@
 extends layout
 
 block content
-  header.topbar.flexbox
-    .contents.flexbox
-      section.brand.flexbox
+  header.topbar
+    .contents
+      section.brand
         .logo#logo
           img(src="/images/america_for_animals_60x60.png", alt="America for Animals logo")
         h1.title#title Humane Eating 
@@ -11,8 +11,8 @@ block content
       //section.navigation.flexbox#navbar
       //  li: a.nav-element(href="#") Find
       //  li: a.nav-element(href="#") Share
-  section.container.stretch
-    .stretch#map-canvas
+  section.container
+    .map#map-canvas
   script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTv8WOV2-xUrcaAe33gI0k8zlwHMpt5_k&sensor=false")
   script.
     require(['javascripts/home'], function (home) {
