@@ -1,4 +1,4 @@
-define(['javascripts/mvc'], function(mvc) {
+define(['javascripts/mvc', 'javascripts/infobubble'], function(mvc) {
   var 
   title_m = new mvc.TitleModel({title: 'Humane Eating'}),
 
@@ -57,9 +57,11 @@ define(['javascripts/mvc'], function(mvc) {
       if (info_window) {
         info_window.close();
       }
-      info_window = new google.maps.InfoWindow({
-        content: html
-      });
+      //info_window = new google.maps.InfoWindow({
+      //  content: html
+      //});
+      info_window = new InfoBubble({});
+      info_window.addTab('', html); 
       info_window.open(map, marker);
     });
   });
