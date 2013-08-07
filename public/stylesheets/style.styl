@@ -1,6 +1,14 @@
 burgundya = rgb(35,30,30)
 burgundyb = rgb(110,100,100) 
 darkgray = rgb(150,150,150)
+darkgreen = rgb(9, 97, 9)
+lightgreen = rgb(95, 194, 70)
+
+mycalc(property, result)
+  property -moz-calc(result)
+  property -webkit-calc(result)
+  property -o-calc(result)
+  property calc(result)
 
 lineargradient()
   background-image -moz-linear-gradient(arguments)
@@ -67,16 +75,19 @@ flexorder(n)
   flexalign(center)
   flexpack(center)
 
-.align-left
-  flex-item-align start
-  -webkit-align-self start
-  align-self start
+.flexleft
+  flexalign(start)
+  flexpack(start)
 
-.align-right
-  flex-item-align end
-  -webkit-align-self end
-  align-self end
+.flexright
+  flexalign(end)
+  flexpack(end)
 
+.flexstretch
+  flexalign(center)
+  flexpack(space-between)
+  flexpack(justify)
+  
 .centered
   text-align center
 
@@ -114,10 +125,16 @@ flexorder(n)
   background-image -webkit-gradient(linear, left bottom, left top, color-stop(0.5, burgundya), color-stop(1, burgundyb))
   @extend .gradient
 
+.green-gradient
+  lineargradient(0deg, darkgreen 50%, lightgreen 50%)
+  lineargradient(bottom, darkgreen 50%, lightgreen 50%)
+  background-image -webkit-gradient(linear, left bottom, left top, color-stop(0.5, darkgreen), color-stop(0.5, lightgreen))
+
 .border-box
   border 1px solid rgb(80,80,80)
   border-radius 2px
-  padding 10px 10px 10px 10px
+  padding 4px 4px 4px 4px
+  //padding 10px 10px 10px 10px
 
 html
   @extend .stretch
@@ -125,35 +142,37 @@ html
 body
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
   @extend .stretch
-  //@extend .flexbox
-  //@extend .flexcol
 
 a
   color: #00B7FF
 
 .topbar
+  width 100%
   @extend .flexbox
   @extend .flexrow
-  @extend .flexcenter
-  //position fixed
-  width 100%
-  //top calc(0%)
-  //left 0%
-  //z-index 2
-  @extend .burgundy-gradient
+  @extend .flexstretch
+  @extend .green-gradient
 
 .contents
+  width 100%
   @extend .flexbox
   @extend .flexrow
-  @extend .flexcenter
-  //position relative
-  //height 70%
-  //@extend .horizontal-padding
+  @extend .flexstretch
+
+.search-bar
+  @extend .flexbox
+  @extend .flexrow
+  @extend .flexleft
 
 .brand
   @extend .flexbox
   @extend .flexrow
   @extend .flexcenter
+
+.list-bar
+  @extend .flexbox
+  @extend .flexrow
+  @extend .flexright
 
 .navigation
   list-style-type none
@@ -162,16 +181,17 @@ a
 .nav-element
   @extend .no-decoration
   @extend .border-box
-  @extend .gray-gradient
+  @extend .green-gradient
+  font-weight bold
   //margin-left 5px
 
 .search
   @extend .nav-element
-  @extend .align-left
+  margin-left 4px
 
 .list
   @extend .nav-element
-  @extend .align-right
+  margin-right 4px
 
 .container
   @extend .stretch
@@ -180,29 +200,47 @@ a
   @extend .stretch
 
 // iPhone 5 
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+//@media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2)
+  .topbar
+    height 44px
   .title
+  .search-bar
+  .list-bar
     color white
+  .title
     adjustmargins(0.5em)
   .logo
     display none
   .navigation
     display none
     
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait)
+//@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait)
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)
+  html
+  body
   .container
   .map
-    height calc(102%)
+    height 460px
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait)
+//@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape)
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape)
+  html
+  body
   .container
   .map
-    height calc(100%)
+    height 275px
 
 // Old iPhone 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+//@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+@media (device-height: 480px) and (device-width: 320px)
+  .topbar
+    height 44px
   .title
+  .search-bar
+  .list-bar
     color white
+  .title
     adjustmargins(0.5em)
   .logo
     display none
@@ -210,21 +248,30 @@ a
     display none
 
 // Old iPhone portrait mode
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait)
+//@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait) 
+@media (device-height: 480px) and (device-width: 320px) and (orientation: portrait)
+  html
+  body
   .container
-    margin-top calc(8%)
-    height calc(70%)
+  .map
+    height 372px
 
 // Old iPhone landscape mode
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape)
+//@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape)
+@media (device-height: 480px) and (device-width: 320px) and (orientation: landscape)
+  html
+  body
   .container
-    margin-top calc(10%)
-    height calc(50%)
+  .map
+    height 225px
 
 // 3rd and 4th gen iPads (Retina display)
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 2)
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)
   .title
+  .search-bar
+  .list-bar
     color white
+  .title
     adjustmargins(0.5em)
   .logo
     display none
@@ -232,9 +279,12 @@ a
     display none
 
 // 1st and 2nd gen iPads 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ration: 1)
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)
   .title
+  .search-bar
+  .list-bar
     color white
+  .title
     adjustmargins(0.5em)
   .logo
     display none
@@ -243,6 +293,10 @@ a
 
 // All iPad generations - fallback
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  .title
+  .search-bar
+  .list-bar
+    color white
   .title
     color white
     adjustmargins(0.5em)
@@ -258,6 +312,10 @@ a
   h1
     font-size 3em
   .title
+    color black
     adjustmargins(0.5em)
   .topbar
     background-image none
+  .search-bar
+  .list-bar
+    display none

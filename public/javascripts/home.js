@@ -101,7 +101,7 @@ define(['javascripts/mvc', 'javascripts/infobubble-compiled'], function(mvc) {
   });
 
   app_router.on('route:get_loc', function(id, name, params) {
-    console.log('You got here!');
+    //console.log('You got here!');
     var url = '/api/locations/'+id;
     if (params !== undefined) {
       var queries = [];
@@ -145,14 +145,22 @@ define(['javascripts/mvc', 'javascripts/infobubble-compiled'], function(mvc) {
     app_router.navigate(url, true);
   }
  
-  // This function creates a new Google Map at the user's current location 
+  // This function creates a new Google Map at the user's current location.
+  // If the Geolocation API is not available, it defaults to Los Angeles, CA USA.
   var initialize = function() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      coord_m.set('latitude', position.coords.latitude);
-      coord_m.set('longitude', position.coords.longitude); 
-      //console.log(coord_m.get('latitude')+' '+coord_m.get('longitude'));
+    if (('geolocation' in navigator) === true) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        coord_m.set('latitude', position.coords.latitude);
+        coord_m.set('longitude', position.coords.longitude); 
+        //console.log(coord_m.get('latitude')+' '+coord_m.get('longitude'));
+        init_gm(coord_m.get('latitude'), coord_m.get('longitude'));
+      });
+    }
+    else {
+      coord_m.set('latitude', 34.0522);
+      coord_m.set('longitude', -118.2428);
       init_gm(coord_m.get('latitude'), coord_m.get('longitude'));
-    });
+    }
   };
 
   // Start backbone's history module as soon as DOM finishes loading

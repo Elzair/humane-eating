@@ -3,10 +3,14 @@ extends layout
 block content
   header.topbar
     .contents
+      section.search-bar
+        a.search(href="/api/locations/search") Search
       section.brand
         .logo#logo
           img(src="/images/america_for_animals_60x60.png", alt="America for Animals logo")
-        h1.title#title Humane Eating 
+        h1.title#title Restaurants
+      section.list-bar
+        a.list(href="/api/locations/list") List
         //a(href="#/api/locations/search?lat=33.5252544&long=-82.1346749") Click Me!
       //section.navigation.flexbox#navbar
       //  li: a.nav-element(href="#") Find
