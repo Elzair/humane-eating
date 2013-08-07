@@ -1,0 +1,30 @@
+@import "variables"
+
+lineargradient()
+  background-image -moz-linear-gradient(arguments)
+  background-image -o-linear-gradient(arguments)
+  background-image -webkit-linear-gradient(arguments)
+  background-image -ms-linear-gradient(arguments)
+  background-image linear-gradient(arguments)
+
+.gradient
+  background-position initial initial
+  background-repeat initial initial
+
+.gray-gradient
+  lineargradient(0deg, darkgray 50%, white 100%)
+  lineargradient(bottom, darkgray 50%, white 100%)
+  background-image -webkit-gradient(linear, left bottom, left top, color-stop(0.5, darkgray), color-stop(1, white))
+  @extend .gradient
+
+.burgundy-gradient
+  lineargradient(0deg, burgundya 50%, burgundyb 100%)
+  lineargradient(bottom, burgundya 50%, burgundyb 100%)
+  background-image -webkit-gradient(linear, left bottom, left top, color-stop(0.5, burgundya), color-stop(1, burgundyb))
+  @extend .gradient
+
+.green-gradient
+  lineargradient(0deg, darkgreen 50%, lightgreen 50%)
+  lineargradient(bottom, darkgreen 50%, lightgreen 50%)
+  background-image -webkit-gradient(linear, left bottom, left top, color-stop(0.5, darkgreen), color-stop(0.5, lightgreen))
+

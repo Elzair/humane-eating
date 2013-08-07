@@ -1,0 +1,114 @@
+// iPhone 5 
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2)
+  .topbar
+    height 44px
+  .title
+  .search-bar
+  .list-bar
+    color white
+  .title
+    adjustmargins(0.5em)
+  .logo
+    display none
+  .navigation
+    display none
+    
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)
+  html
+  body
+  .container
+  .map
+    height 460px
+
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape)
+  html
+  body
+  .container
+  .map
+    height 275px
+
+// Old iPhone 
+@media (device-height: 480px) and (device-width: 320px)
+  .topbar
+    height 44px
+  .title
+  .search-bar
+  .list-bar
+    color white
+  .title
+    adjustmargins(0.5em)
+  .logo
+    display none
+  .navigation
+    display none
+
+// Old iPhone portrait mode
+@media (device-height: 480px) and (device-width: 320px) and (orientation: portrait)
+  html
+  body
+  .container
+  .map
+    height 372px
+
+// Old iPhone landscape mode
+@media (device-height: 480px) and (device-width: 320px) and (orientation: landscape)
+  html
+  body
+  .container
+  .map
+    height 225px
+
+// 3rd and 4th gen iPads (Retina display)
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)
+  .title
+  .search-bar
+  .list-bar
+    color white
+  .title
+    adjustmargins(0.5em)
+  .logo
+    display none
+  .navigation
+    display none
+
+// 1st and 2nd gen iPads 
+@media only screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1)
+  .title
+  .search-bar
+  .list-bar
+    color white
+  .title
+    adjustmargins(0.5em)
+  .logo
+    display none
+  .navigation
+    display none
+
+// All iPad generations - fallback
+@media only screen and (device-width: 768px) and (device-height: 1024px)
+  .title
+  .search-bar
+  .list-bar
+    color white
+  .title
+    color white
+    adjustmargins(0.5em)
+  .logo
+    display none
+  .navigation
+    display none
+
+// Desktops and laptops
+@media only screen and (min-width: 1224px)
+  h1
+    font-size 3em
+  .title
+    color black
+    adjustmargins(0.5em)
+  .topbar
+    background-image none
+  .contents
+    flexpack(center)
+  .search-bar
+  .list-bar
+    display none

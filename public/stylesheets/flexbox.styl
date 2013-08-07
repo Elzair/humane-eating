@@ -1,0 +1,66 @@
+flexdir(n)
+  -webkit-flex-direction n
+  flex-direction n
+
+flexflow(n)
+  -webkit-flex-flow n
+  -ms-flex-flow n
+  -moz-flex-flow n
+  flex-flow n
+
+flexalign(n)
+  -webkit-box-align n
+  -webkit-flex-align n
+  -moz-box-align n
+  -ms-flex-align n
+  -webkit-align-items n
+  align-items n
+  align-content n
+
+flexpack(n)
+  -webkit-box-pack n
+  -moz-box-pack n
+  -ms-flex-pack n
+  -webkit-justify-content flex-{n}
+  -webkit-justify-content n
+  justify-content flex-{n}
+  justify-content n
+
+boxorder(n)
+  -moz-box-ordinal-group n
+  -webkit-box-ordinal-group n
+
+flexorder(n)
+  -ms-flex-order n
+  -webkit-order n
+  order n
+
+.flexbox
+  display -webkit-box
+  display -webkit-flex
+  display -moz-box
+  display -ms-flexbox
+  display flex
+
+.flexrow
+  flexflow(row nowrap)
+
+.flexcol
+  flexflow(column nowrap)
+
+.flexcenter
+  flexalign(center)
+  flexpack(center)
+
+.flexleft
+  flexalign(start)
+  flexpack(start)
+
+.flexright
+  flexalign(end)
+  flexpack(end)
+
+.flexstretch
+  flexalign(center)
+  flexpack(space-between)
+  flexpack(justify)
