@@ -9,18 +9,15 @@ html
     link(rel="apple-touch-icon", size="114x114", href="/images/apple-touch-icon-114x114.png")
     link(rel="apple-touch-icon", size="72x72", href="/images/apple-touch-icon-72x72.png")
     link(rel="apple-touch-icon", href="/images/apple-touch-icon.png")
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    script(type='text/javascript', src='/javascripts/jam/require.js')
-    script.
+    link(rel='stylesheet', href="/stylesheets/style.css")
+    script(type="text/javascript", src="/javascripts/jam/require.js")
+    script(type="text/javascript").
       // Hide browser address bar on mobiles when in portrait mode
       function hide_address_bar() {
         if (window.orientation === 0) {
-          setTimeout(function() {
             window.scrollTo(0, 0);
-          }, 0);
         }
       }
-      window.addEventListener('orientationchange', hideTaskBar, false);
       if ((navigator.userAgent.match(/iPhone/i)) || 
         (navigator.userAgent.match(/iPod/i))) {
         window.addEventListener('orientationchange', hide_address_bar, false);
