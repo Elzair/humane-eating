@@ -10,8 +10,6 @@
     adjustmargins(0.5em)
   .logo
     display none
-  .navigation
-    display none
     
 @media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)
   html
@@ -38,8 +36,6 @@
   .title
     adjustmargins(0.5em)
   .logo
-    display none
-  .navigation
     display none
 
 // Old iPhone portrait mode
@@ -68,8 +64,6 @@
     adjustmargins(0.5em)
   .logo
     display none
-  .navigation
-    display none
 
 // 1st and 2nd gen iPads 
 @media only screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1)
@@ -81,8 +75,6 @@
     adjustmargins(0.5em)
   .logo
     display none
-  .navigation
-    display none
 
 // All iPad generations - fallback
 @media only screen and (device-width: 768px) and (device-height: 1024px)
@@ -91,11 +83,8 @@
   .list-bar
     color white
   .title
-    color white
     adjustmargins(0.5em)
   .logo
-    display none
-  .navigation
     display none
 
 // Desktops and laptops
@@ -109,6 +98,6 @@
     background-image none
   .contents
     flexpack(center)
-  .search-bar
-  .list-bar
+  .empty-bar
+  .filter-bar
     display none

@@ -25,17 +25,18 @@ a
   @extend .flexrow
   @extend .flexstretch
 
-.search-bar
+.empty-bar
   @extend .flexbox
   @extend .flexrow
-  @extend .flexleft
+  @extend .flexcenter
 
 .brand
   @extend .flexbox
   @extend .flexrow
   @extend .flexcenter
 
-.list-bar
+.filter-bar
+  z-index 2
   @extend .flexbox
   @extend .flexrow
   @extend .flexright
@@ -50,13 +51,9 @@ a
   @extend .green-gradient
   font-weight bold
 
-.search
+.filter
   @extend .nav-element
-  margin-left 4px
-
-.list
-  @extend .nav-element
-  margin-right 4px
+  margin-right 5%
 
 .container
   @extend .stretch

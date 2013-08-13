@@ -3,18 +3,17 @@ extends layout
 block content
   header.topbar
     .contents
-      section.search-bar
-        a.search(href="/api/locations/search") Search
+      section.empty-bar
       section.brand
         .logo#logo
           img(src="/images/america_for_animals_60x60.png", alt="America for Animals logo")
         h1.title#title Restaurants
-      section.list-bar
-        a.list(href="/api/locations/list") List
+      section.filter-bar
+        a.filter(href="#filter") Filter
   section.container
     .map#map-canvas
   script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTv8WOV2-xUrcaAe33gI0k8zlwHMpt5_k&sensor=false")
-  script.
+  script(type="text/javascript").
     require(['javascripts/home'], function (home) {
       $(document).ready(function() {
         home.initialize();
