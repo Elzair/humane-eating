@@ -8,3 +8,4 @@ public/stylesheets/fluidity/
 public/javascripts/ender.js
 public/javascripts/ender.min.js
 public/jam/
+conf/parse.json
