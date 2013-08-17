@@ -55,7 +55,11 @@ define(['javascripts/mvc', 'javascripts/haversine',
         scale: 1,
         fillOpacity: 1.0,
         fillColor: color,
-        strokeColor: color
+        strokeColor: 'gray',
+        strokeWeight: 0.5,
+        size: new google.maps.Size(32, 32),
+        origin: new google.maps.Point(0,0),
+        anchor: new google.maps.Point(16,0)
       },
       draggable: false,
       map: map,
