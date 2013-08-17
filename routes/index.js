@@ -109,11 +109,11 @@ exports.search = function(req, res) {
       query.equalTo(c, constraints[c]);
     }
   }
-  query.limit(2);
+  query.limit(10);
   query.near('location', curr_loc);
   query.select('name', 'cuisines', 'address1', 'address2', 'city', 'region',
       'postalcode', 'country', 'phone', 'homepage', 'humanestatus', 
-      'location', 'latitude', 'longitude');
+      'location', 'latitude', 'longitude', 'description');
   query.find().then(
     function (results) {
       console.log(util.format('%j', results));

@@ -53,7 +53,7 @@ define(['javascripts/mvc', 'javascripts/infobubble-compiled'], function(mvc) {
     });
     google.maps.event.addListener(marker, 'click', function(loc) {
       var loc_info = self.get(loc_id);
-      console.log(JSON.stringify(loc_info.attributes));
+      //console.log(JSON.stringify(loc_info.attributes));
       var html = _.template(mvc.templates.infwin, loc_info.attributes);
 
       // Close info_window if it is already open
@@ -72,7 +72,6 @@ define(['javascripts/mvc', 'javascripts/infobubble-compiled'], function(mvc) {
   app_router.on('route:search', function(params) {
     var url = '/api/locations/search';
     if (params !== undefined) {
-      //console.log(JSON.stringify(params));
       var queries = [];
       var p;
       for (p in params) {
@@ -84,16 +83,15 @@ define(['javascripts/mvc', 'javascripts/infobubble-compiled'], function(mvc) {
     }
     $.getJSON(url)
     .done(function(data) {
-      //var results = JSON.parse(data);
+      console.log(data);
       // Set id attribute of all locations
       var i;
-      for (i in data.locations) {
-        if (data.locations.hasOwnProperty(i)) {
-          data.locations[i].id = data.locations[i].locationId;
-        }
+      for (i=0; i<data.length; i++) {
+        if (data[i].hasOwnProperty('objectId')) {
+          data[i].id = data[i].objectId;
+        } 
       }
-      loc_c.add(data.locations);
-      //console.log(JSON.stringify(loc_c));
+      loc_c.add(data);
     })
     .fail(function(err) {
       console.log(err);
