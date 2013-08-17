@@ -1,4 +1,5 @@
-define(['javascripts/mvc', 'javascripts/infobubble-compiled'], function(mvc) {
+define(['javascripts/mvc', 'javascripts/haversine', 
+    'javascripts/infobubble-compiled' ], function(mvc, haversine) {
   var 
   title_m = new mvc.TitleModel({title: 'Humane Eating'}),
 
@@ -85,10 +86,11 @@ define(['javascripts/mvc', 'javascripts/infobubble-compiled'], function(mvc) {
     .done(function(data) {
       console.log(data);
       // Set id attribute of all locations
-      var i;
+      var user_loc = coord_m.toJSON();
       for (i=0; i<data.length; i++) {
         if (data[i].hasOwnProperty('objectId')) {
           data[i].id = data[i].objectId;
+          data[i].distance = haversine.distance(user_loc, data[i].location, true);
         } 
       }
       loc_c.add(data);
