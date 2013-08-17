@@ -3,7 +3,7 @@ define([], function() {
     var p1 = arguments[0]
       , p2 = arguments[1]
       , use_miles = arguments[2] || false
-      , KM2MI = 1.60934
+      , KM2MI = 1/1.60934
       , DEG2RAD = Math.PI / 180.0
       , RAD2DEG = 180.0 / Math.PI
       , R = 6371 // Radius of the Earth (in km)

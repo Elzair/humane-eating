@@ -1,5 +1,6 @@
 define(['javascripts/mvc', 'javascripts/haversine', 
-    'javascripts/infobubble-compiled' ], function(mvc, haversine) {
+    'javascripts/infobubble-compiled'], 
+    function(mvc, haversine) {
   var 
   title_m = new mvc.TitleModel({title: 'Humane Eating'}),
 
@@ -45,9 +46,18 @@ define(['javascripts/mvc', 'javascripts/haversine',
     var self = this; // Store reference to Collection
     var loc_id = loc.id; // Store reference to location id
     //console.log('Id: '+loc_id);
+    var color = loc.get('color');
     var marker_pos = new google.maps.LatLng(loc.get('latitude'),loc.get('longitude'));
     var marker = new google.maps.Marker({
       position: marker_pos,
+      icon: {
+        path: 'M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,18.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5z M16,14.584c-1.979,0-3.584-1.604-3.584-3.584S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584z',
+        scale: 1,
+        fillOpacity: 1.0,
+        fillColor: color,
+        strokeColor: color
+      },
+      draggable: false,
       map: map,
       animation: google.maps.Animation.DROP,
       title: loc.get('name')
@@ -91,6 +101,22 @@ define(['javascripts/mvc', 'javascripts/haversine',
         if (data[i].hasOwnProperty('objectId')) {
           data[i].id = data[i].objectId;
           data[i].distance = haversine.distance(user_loc, data[i].location, true);
+          switch(data[i].humanestatus) {
+            case 'Vegan':
+              data[i].color = '#006000';
+              break;
+            case 'Vegan-Friendly':
+            case 'Vegetarian':
+            case 'Vegetarian-Friendly':
+              data[i].color = '#00ff00';
+              break;
+            case 'Humane-Friendly':
+              data[i].color = '#8b4513';
+              break;
+            default:
+              data[i].color = '#ffff00';
+              break;
+          }
         } 
       }
       loc_c.add(data);
