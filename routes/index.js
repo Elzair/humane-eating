@@ -113,7 +113,7 @@ exports.search = function(req, res) {
   query.near('location', curr_loc);
   query.select('name', 'cuisines', 'address1', 'address2', 'city', 'region',
       'postalcode', 'country', 'phone', 'homepage', 'humanestatus', 
-      'location');
+      'location', 'latitude', 'longitude');
   query.find().then(
     function (results) {
       console.log(util.format('%j', results));
