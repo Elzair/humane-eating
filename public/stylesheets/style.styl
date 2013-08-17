@@ -25,6 +25,13 @@ a
   @extend .flexrow
   @extend .flexstretch
 
+.settings-bar
+  z-index 2
+  @extend .flexbox
+  @extend .flexrow
+  @extend .flexleft
+  margin-left 5%
+
 .empty-bar
   @extend .flexbox
   @extend .flexrow
@@ -35,25 +42,36 @@ a
   @extend .flexrow
   @extend .flexcenter
 
-.filter-bar
+.add-bar
   z-index 2
   @extend .flexbox
   @extend .flexrow
   @extend .flexright
+  margin-right 5%
 
 .navigation
   list-style-type none
   @extend .horizontal-padding
 
 .nav-element
+  top auto
+  bottom auto
   @extend .no-decoration
   @extend .border-box
   @extend .green-gradient
   font-weight bold
 
-.filter
+.settings
+.add
   @extend .nav-element
-  margin-right 5%
+  @extend .flexbox
+  @extend .flexcol
+  @extend .flexcenter
+
+.settings-contents
+.add-contents
+  top auto
+  bottom auto
 
 .container
   @extend .stretch

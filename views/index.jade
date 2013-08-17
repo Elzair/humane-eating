@@ -3,13 +3,16 @@ extends layout
 block content
   header.topbar
     .contents
-      section.empty-bar
+      section.settings-bar
+        a.settings(href="#settings")
+          img.settings-contents(src="/images/settings.svg")
       section.brand
         .logo#logo
           img(src="/images/america_for_animals_60x60.png", alt="America for Animals logo")
         h1.title#title Restaurants
-      section.filter-bar
-        a.filter(href="#filter") Filter
+      section.add-bar
+        a.add(href="#add")
+          img.add-contents(src="/images/add.svg")
   section.container
     .map#map-canvas
   script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTv8WOV2-xUrcaAe33gI0k8zlwHMpt5_k&sensor=false")

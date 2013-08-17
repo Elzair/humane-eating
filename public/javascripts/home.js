@@ -108,13 +108,13 @@ define(['javascripts/mvc', 'javascripts/haversine',
             case 'Vegan-Friendly':
             case 'Vegetarian':
             case 'Vegetarian-Friendly':
-              data[i].color = '#00ff00';
+              data[i].color = '#6ab93a';
               break;
             case 'Humane-Friendly':
               data[i].color = '#8b4513';
               break;
             default:
-              data[i].color = '#ffff00';
+              data[i].color = '#f3aa24';
               break;
           }
         } 

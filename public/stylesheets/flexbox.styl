@@ -49,18 +49,19 @@ flexorder(n)
   flexflow(column nowrap)
 
 .flexcenter
-  flexalign(center)
   flexpack(center)
 
+.flexcrosscenter
+  flexalign(center)
+
 .flexleft
-  flexalign(start)
+  flexalign(center)
   flexpack(start)
 
 .flexright
-  flexalign(end)
+  flexalign(center)
   flexpack(end)
 
 .flexstretch
-  flexalign(center)
   flexpack(space-between)
   flexpack(justify)

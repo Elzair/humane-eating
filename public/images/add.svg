@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="0.5cm" height="0.5cm" version="1.1" viewBox="0 0 32 32"
+     xmlns="http://www.w3.org/2000/svg">
+  <title>Add</title>
+  <desc>A Plus Sign</desc>
+  <rect x="1" y="1" width="30" height="30" fill="none" stroke="none"/>
+  <path d="M25.979,12.896 19.312,12.896 19.312,6.229 12.647,6.229 12.647,12.896 5.979,12.896 5.979,19.562 12.647,19.562 12.647,26.229 19.312,26.229 19.312,19.562 25.979,19.562z" fill="white" stroke="none" />
+</svg>
