@@ -189,6 +189,13 @@ define(['javascripts/mvc', 'javascripts/haversine',
     var url = '/api/locations/search?lat=' + latitude +
       '&long=' + longitude;
     app_router.navigate(url, true);
+
+    // Add event listener to close open InfoBubble when user clicks outside it
+    google.maps.event.addListener(map, 'click', function() {
+      if (info_window) {
+        info_window.close();
+      }
+    });
   }
  
   // This function creates a new Google Map at the user's current location.
