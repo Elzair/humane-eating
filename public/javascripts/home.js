@@ -79,7 +79,15 @@ define(['javascripts/mvc', 'javascripts/haversine',
       if (info_window) {
         info_window.close();
       }
-      info_window = new InfoBubble({content: html});
+      info_window = new InfoBubble({
+        content: html,
+        hideCloseButton: true,
+        arrowPosition: 15,
+        arrowSize: 20,
+        arrowStyle: 2,
+        shadowStyle: 0,
+        backgroundClassName: 'popup'
+      });
       info_window.open(map, marker);
     });
   });
@@ -164,7 +172,8 @@ define(['javascripts/mvc', 'javascripts/haversine',
     var center = new google.maps.LatLng(latitude, longitude);
     var map_options = {
       center: center,
-      zoom: 9,
+      zoom: 10,
+      disableDefaultUI: true,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), map_options);
