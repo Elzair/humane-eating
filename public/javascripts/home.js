@@ -163,6 +163,7 @@ define(['javascripts/mvc', 'javascripts/haversine',
     $.getJSON(url)
     .done(function(data) {
       console.log(JSON.stringify(data));
+      
     })
     .fail(function(err) {
       console.log(err);

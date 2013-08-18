@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="0.5cm" height="0.5cm" version="1.1" viewBox="0 0 32 32"
+     xmlns="http://www.w3.org/2000/svg">
+  <title>Location</title>
+  <desc>An arrow pointing to the top right corner of the screen</desc>
+  <rect x="1" y="1" width="30" height="30" fill="none" stroke="none"/>
+  <path d="M15.834,29.084 15.834,16.166 2.917,16.166 29.083,2.917z" fill="white" stroke="none" />
+</svg>
