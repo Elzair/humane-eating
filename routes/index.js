@@ -70,8 +70,8 @@ exports.search = function(req, res) {
   query.limit(10);
   query.near('location', curr_loc);
   query.select('name', 'cuisines', 'address1', 'address2', 'city', 'region',
-      'postalcode', 'country', 'phone', 'homepage', 'humanestatus', 
-      'location', 'latitude', 'longitude', 'description');
+      'postalcode', 'country', 'humanestatus', 'location', 'latitude', 
+      'longitude', 'issue1');
   query.find().then(
     function (results) {
       console.log(util.format('%j', results));

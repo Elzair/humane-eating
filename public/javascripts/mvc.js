@@ -4,7 +4,8 @@ define(['jquery', 'backbone-query-parameters',
   var templates = {
     title: '<%= title %>',
     image: '<img src="<%= src %>" alt="<%= caption %>" class="<%=  classes %>">',
-    infwin: '<div id="content"><div class="siteNotice"><p style="color: <%= color %>"><%= humanestatus %>' +
+    infwin: '<div id="content"><div class="siteNotice"><p style="color: <%= color %>"><%= humanestatus %> ' +
+            '<% if (issue1) { %><span>(<%= issue1 %>)</span><% } %>' +
             '</p></div><h2 id="firstHeading" class="firstHeading"><%= name %></h2><div id="bodyContent">' +
             '<p><%= address1 %> <%= address2 %></p><p><%= city %>, <%= region %>, <%= country %></p>' +
             '<p><%= distance %> miles</p></div>'
