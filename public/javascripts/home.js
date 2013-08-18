@@ -120,6 +120,9 @@ define(['javascripts/mvc', 'javascripts/haversine',
             case 'Humane-Friendly':
               data[i].color = '#8b4513';
               break;
+            case 'Watch List':
+              data[i].color = '#c01a1d';
+              break;
             default:
               data[i].color = '#f3aa24';
               break;
