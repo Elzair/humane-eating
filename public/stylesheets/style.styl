@@ -6,11 +6,19 @@ html
   @extend .stretch
 
 body
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  font 14px "Lucida Grande", Helvetica, Arial, sans-serif
   @extend .stretch
 
 a
-  color: #00B7FF
+  color #00B7FF
+
+p
+.firstHeading
+  margin 0
+
+.siteNotice
+  font-size 12px
+  font-weight bold
 
 .topbar
   width 100%
@@ -67,11 +75,13 @@ a
   @extend .flexbox
   @extend .flexcol
   @extend .flexcenter
+  visibility inherit
 
 .settings-contents
 .add-contents
   top auto
   bottom auto
+  visibility inherit
 
 .container
   @extend .stretch

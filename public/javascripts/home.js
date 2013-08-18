@@ -42,33 +42,37 @@ define(['javascripts/mvc', 'javascripts/haversine',
   // Add a marker for each new location and an event
   // listener to open an InfoBubble when the user clicks that marker
   loc_c.on('add', function(loc) {
-    //console.log('Got here: '+JSON.stringify(loc));
     var self = this; // Store reference to Collection
     var loc_id = loc.id; // Store reference to location id
-    //console.log('Id: '+loc_id);
     var color = loc.get('color');
     var marker_pos = new google.maps.LatLng(loc.get('latitude'),loc.get('longitude'));
+
+    // First create marker icon
+    var icon = {
+      path: 'M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,18.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5z M16,14.584c-1.979,0-3.584-1.604-3.584-3.584S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584z',
+      scale: 1,
+      fillOpacity: 1.0,
+      fillColor: color,
+      strokeColor: 'gray',
+      strokeWeight: 0.5,
+      size: new google.maps.Size(32, 32),
+      origin: new google.maps.Point(0,0),
+      anchor: new google.maps.Point(16,0)
+    };
+
+    // Add marker to map
     var marker = new google.maps.Marker({
       position: marker_pos,
-      icon: {
-        path: 'M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,18.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5z M16,14.584c-1.979,0-3.584-1.604-3.584-3.584S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584z',
-        scale: 1,
-        fillOpacity: 1.0,
-        fillColor: color,
-        strokeColor: 'gray',
-        strokeWeight: 0.5,
-        size: new google.maps.Size(32, 32),
-        origin: new google.maps.Point(0,0),
-        anchor: new google.maps.Point(16,0)
-      },
+      icon: icon,
       draggable: false,
       map: map,
       animation: google.maps.Animation.DROP,
       title: loc.get('name')
     });
+
+    // Triger InfoBubble to open when user clicks marker
     google.maps.event.addListener(marker, 'click', function(loc) {
       var loc_info = self.get(loc_id);
-      //console.log(JSON.stringify(loc_info.attributes));
       var html = _.template(mvc.templates.infwin, loc_info.attributes);
 
       // Close info_window if it is already open
@@ -98,8 +102,7 @@ define(['javascripts/mvc', 'javascripts/haversine',
     }
     $.getJSON(url)
     .done(function(data) {
-      console.log(data);
-      // Set id attribute of all locations
+      // Set id attribute, distance and marker color of all locations
       var user_loc = coord_m.toJSON();
       for (i=0; i<data.length; i++) {
         if (data[i].hasOwnProperty('objectId')) {
@@ -123,6 +126,8 @@ define(['javascripts/mvc', 'javascripts/haversine',
           }
         } 
       }
+
+      // Add data to Location Collection
       loc_c.add(data);
     })
     .fail(function(err) {
@@ -131,7 +136,6 @@ define(['javascripts/mvc', 'javascripts/haversine',
   });
 
   app_router.on('route:get_loc', function(id, name, params) {
-    //console.log('You got here!');
     var url = '/api/locations/'+id;
     if (params !== undefined) {
       var queries = [];
@@ -154,8 +158,9 @@ define(['javascripts/mvc', 'javascripts/haversine',
 
   // This function creates a new Google Map at the given coordinates.
   function init_gm(latitude, longitude) {
+    var center = new google.maps.LatLng(latitude, longitude);
     var map_options = {
-      center: new google.maps.LatLng(latitude, longitude),
+      center: center,
       zoom: 9,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -163,7 +168,6 @@ define(['javascripts/mvc', 'javascripts/haversine',
 
     // Add event listener to call search route when the current location changes
     google.maps.event.addListener(map, 'center_changed', function() {
-
       var url = '/api/locations/search?lat=' + map.getCenter().lat() + 
                 '&long=' + map.getCenter().lng();
       app_router.navigate(url, true);
@@ -182,7 +186,6 @@ define(['javascripts/mvc', 'javascripts/haversine',
       navigator.geolocation.getCurrentPosition(function(position) {
         coord_m.set('latitude', position.coords.latitude);
         coord_m.set('longitude', position.coords.longitude); 
-        //console.log(coord_m.get('latitude')+' '+coord_m.get('longitude'));
         init_gm(coord_m.get('latitude'), coord_m.get('longitude'));
       });
     }
