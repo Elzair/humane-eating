@@ -86,7 +86,9 @@ define(['javascripts/mvc', 'javascripts/haversine',
         arrowSize: 20,
         arrowStyle: 2,
         shadowStyle: 0,
-        backgroundClassName: 'popup'
+        backgroundClassName: 'popup',
+        borderWidth: 1,
+        borderColor: 'gray'
       });
       info_window.open(map, marker);
     });

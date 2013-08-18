@@ -8,7 +8,9 @@ define(['jquery', 'backbone-query-parameters',
             '<% if (issue1) { %><span>(<%= issue1 %>)</span><% } %>' +
             '</p></div><h2 id="firstHeading" class="firstHeading"><%= name %></h2><div id="bodyContent">' +
             '<p><%= address1 %> <%= address2 %></p><p><%= city %>, <%= region %>, <%= country %></p>' +
-            '<p><%= distance %> miles</p></div>'
+            '<p><%= distance %> miles</p></div></div>' +
+            '<div id="side"><div id="side-table"><div id="side-el"><a href="#/api/locations/<%= objectId %>">' +
+            '<img src="/images/right_arrow.svg" /></a></div></div></div>'
   },
 
   // Define models

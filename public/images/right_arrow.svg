@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="0.5cm" height="0.5cm" version="1.1" viewBox="0 0 32 32"
+     xmlns="http://www.w3.org/2000/svg">
+  <title>Right Arrow</title>
+  <desc>A greater than sign</desc>
+  <rect x="1" y="1" width="30" height="30" fill="none" stroke="none"/>
+  <path d="M10.129,22.186 16.316,15.999 10.129,9.812 13.665,6.276 23.389,15.999 13.665,25.725z" fill="white" stroke="none" />
+</svg>
